@@ -2,7 +2,7 @@
     <div>
         <div class="nav flex items-center">
             <div class="logo">
-                <router-link :to="{name: 'home'}" class="naked-link" href="/">
+                <router-link :to="{name: 'index'}" class="naked-link" href="/">
                     <img class="logo w-3rem" src="/images/icon.png">
                 </router-link>
             </div>
@@ -34,16 +34,16 @@
                         <div class="block p-2">
                             <a href="javascript://" class="naked-link" @click="logout">Log out</a>
                         </div>
-                        <div class="block p-2" v-if="isAdminViewingProfilePage() && ! isAdminImpersonating()">
-                            <a class="naked-link" href="javascript://" @click="impersonate(user)">
-                                Impersonate {{ user.first_name }}
-                            </a>
-                        </div>
-                        <div class="block p-2" v-if="isAdminImpersonating()">
-                            <a class="naked-link" href="javascript://" @click="leaveImpersonation">
-                                Leave impersonation
-                            </a>
-                        </div>
+                        <!--<div class="block p-2" v-if="isAdminViewingProfilePage() && ! isAdminImpersonating()">-->
+                            <!--<a class="naked-link" href="javascript://" @click="impersonate(user)">-->
+                                <!--Impersonate {{ user.first_name }}-->
+                            <!--</a>-->
+                        <!--</div>-->
+                        <!--<div class="block p-2" v-if="isAdminImpersonating()">-->
+                            <!--<a class="naked-link" href="javascript://" @click="leaveImpersonation">-->
+                                <!--Leave impersonation-->
+                            <!--</a>-->
+                        <!--</div>-->
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
             //     });
             // }
         },
-        // methods: {
+        methods: {
         //     broadcastPresence() {
         //         window.Echo.join('online_presence')
         //             .here((users) => {
@@ -178,14 +178,12 @@
         //             }
         //         });
         //     },
-        //     logout() {
-        //         axios.get('/auth/logout').then((response) => {
-        //             this.$cookies.set('user', null);
-        //             this.$store.commit('updateUser', {});
-        //             this.$toasted.show("You're logged out! Don't be a stranger now, ya hear? 🤠", {duration: 2000});
-        //         });
-        //     },
-        // },
+            logout() {
+                this.$cookies.set('user', null);
+                //this.$store.commit('updateUser', {});
+                this.$toast.show("You're logged out! Don't be a stranger now, ya hear? 🤠", {duration: 2000});
+            },
+        },
         computed: {
             loggedIn() {
                 // return this.$store.state.user && this.$store.state.user.id;

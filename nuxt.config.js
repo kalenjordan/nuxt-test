@@ -40,6 +40,7 @@ module.exports = {
     ** Nuxt.js modules
     */
     modules: [
+        '@nuxtjs/toast',
         'cookie-universal-nuxt',
         '@nuxtjs/axios',
         '@nuxtjs/pwa'
