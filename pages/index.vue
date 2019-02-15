@@ -1,6 +1,6 @@
 <template>
     <div class="page-home">
-        <!--<top-nav class="m-4 sm:m-8"></top-nav>-->
+        <top-nav class="m-4 sm:m-8"></top-nav>
         <section class="header text-center max-w-lg mx-auto mb-4">
             <h1 id="typewriter" class="mx-4 text-2xl sm:text-4xl">
                 {{ homeSavedSearch.name }}
@@ -11,7 +11,7 @@
             <h2 class="text-center mx-auto mb-8">About</h2>
             <div class="font-120 mx-auto px-4" style="max-width: 40rem;">
                 <p class="mb-4">
-                    The goal of this platform is to facilitate various types of matchmaking. Having run a
+                    This platform is to facilitate various types of matchmaking. Having run a
                     <a href="https://commercehero.io">matchmaking platform</a> in a specific eCommerce developer niche successfully
                     for the last 2 years, I'm taking some of the learnings from that, and trying to create an offering that's a little bit more broad and flexible.
                 </p>
@@ -33,8 +33,12 @@
 
 <script>
     // import Typewriter from 'typewriter-effect/dist/core';
+    import TopNav from '~/components/TopNav.vue'
 
     export default {
+        components: {
+            TopNav
+        },
         data() {
             return {
                 users: [],
