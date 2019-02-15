@@ -85,27 +85,27 @@
                 showingMenu: false,
             }
         },
-        // mounted() {
-        //     window.addEventListener('keyup', this.hotkeyHandler);
-        //     window.Events.$on('user-authenticated', (data) => {
-        //         this.$cookies.set('user', data);
-        //         this.$store.commit('updateUser', JSON.parse(data));
-        //         this.broadcastPresence();
-        //     });
-        //
-        //     if (this.$cookies.get('user')) {
-        //         this.$store.commit('updateUser', this.$cookies.get('user'));
-        //     }
-        //
-        //     if (this.loggedIn) {
-        //         this.broadcastPresence();
-        //         axios.get('/auth/me').then((response) => {
-        //             if (response.data.error_message) {
-        //                 this.logout();
-        //             }
-        //         });
-        //     }
-        // },
+        mounted() {
+            //window.addEventListener('keyup', this.hotkeyHandler);
+            // window.Events.$on('user-authenticated', (data) => {
+            //     this.$cookies.set('user', data);
+            //     this.$store.commit('updateUser', JSON.parse(data));
+            //     this.broadcastPresence();
+            // });
+
+            // if (this.$cookies.get('user')) {
+            //     //this.$store.commit('updateUser', this.$cookies.get('user'));
+            // }
+
+            // if (this.loggedIn) {
+            //     this.broadcastPresence();
+            //     axios.get('/auth/me').then((response) => {
+            //         if (response.data.error_message) {
+            //             this.logout();
+            //         }
+            //     });
+            // }
+        },
         // methods: {
         //     broadcastPresence() {
         //         window.Echo.join('online_presence')
@@ -186,16 +186,17 @@
         //         });
         //     },
         // },
-        // computed: {
-        //     loggedIn() {
-        //         return this.$store.state.user && this.$store.state.user.id;
-        //     },
-        //     loggedInUser() {
-        //         return this.$store.state.user;
-        //     },
-        //     presentUsers() {
-        //         return this.$store.state.presentUsers;
-        //     },
-        // },
+        computed: {
+            loggedIn() {
+                // return this.$store.state.user && this.$store.state.user.id;
+                return this.$cookies.get('user') && this.$cookies.get('user').id;
+            },
+            loggedInUser() {
+                return this.$cookies.get('user');
+            },
+            // presentUsers() {
+            //     return this.$store.state.presentUsers;
+            // },
+        },
     }
 </script>
