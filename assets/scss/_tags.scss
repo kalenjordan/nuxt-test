@@ -1,0 +1,153 @@
+.tag {
+    overflow: hidden;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 5px;
+    margin: 0.25em;
+    border: solid 1px;
+
+    transition: all 0.25s ease;
+
+    background-color: $grayLightest;
+    border-color: $grayLighter;
+    color: $grayLight;
+
+    i.tag-icon {
+        font-size: 80%;
+        margin-right: 3px;
+
+        &.fa-location-arrow {
+            opacity: 0.7;
+        }
+    }
+
+    .tag-name {
+        text-decoration: none;
+        color: $grayLight;
+        &:hover {
+            color: $highlightColor;
+        }
+
+        display: inline-block;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .separator {
+        border-left: solid 1px $grayLighter;
+        padding: 0.25rem;
+        margin-right: -.5rem;
+    }
+
+    .count-and-upvote {
+        display: inline-block;
+        padding-right: 0.5rem;
+
+        cursor: pointer;
+        opacity: .4;
+        &:hover {
+            color: $highlightColor;
+            opacity: 1;
+        }
+    }
+}
+
+.tag.add-tag {
+    cursor: pointer;
+    &:hover {
+        color: $highlightColor;
+    }
+}
+
+.tag.tag-with-upvote {
+    padding: 0;
+    cursor: default;
+
+    .tag-name {
+        cursor: pointer;
+
+        &:hover {
+            color: $highlightColor;
+        }
+    }
+
+    .fa-thumbs-up {
+        font-size: 80%;
+        display: block;
+        margin-left: 7px;
+        margin-top: 3px;
+        margin-bottom: -2px;
+        float: right;
+
+        &.upvoted {
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.inline-tag {
+    display: inline-block;
+    background-color: $grayEvenLighter;
+    border-radius: 5px;
+    color: $grayLight;
+    padding: 4px 6px 3px;
+    font-size: 70%;
+    line-height: 1.2;
+}
+
+.tag-cards {
+    display: flex;
+}
+
+.tag-card {
+    img {
+        transition: all 0.25s ease;
+        display: inline-block;
+        width: 40px;
+        border-radius: 50%;
+        margin-right: -15px;
+        border: solid 2px $primaryColor;
+    }
+
+    &:hover {
+        img {
+            margin-right: -10px;
+        }
+    }
+
+}
+
+.tag-endorsement-wrapper {
+    position: fixed;
+    right: -500px;
+    bottom: 0;
+    transition: all 0.4s ease;
+    z-index: 99;
+}
+
+.tag-editable {
+    cursor: default;
+
+    .tag-name:hover {
+        color: $grayLight;
+    }
+
+    .close {
+        margin-left: -0.25rem;
+        margin-right: .75rem;
+        font-size: 80%;
+        cursor: pointer;
+        &:hover {
+            color: $highlightColor;
+        }
+    }
+}
+
+.tag-autocomplete {
+    .v-menu__content {
+        top: 34px !important;
+        left: 1px !important;
+    }
+}

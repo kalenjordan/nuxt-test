@@ -1,0 +1,50 @@
+.nav {
+    .logo img {
+        &:hover {
+            transform: scale(1.1);
+        }
+        @media screen and (min-width: 576px) {
+            width: 3.5rem;
+        }
+    }
+
+    .logged-in-menu {
+        z-index: 2;
+        top: 70px;
+        right: 0;
+        width: 12rem;
+    }
+
+    .fas {
+        &:hover {
+            // @apply text-highlight;
+        }
+    }
+
+    .notification-wrapper {
+        .notification-list {
+            z-index: 2;
+            top: 28px;
+            right: 0;
+        }
+
+        .alert-bubble {
+            bottom: -4px;
+            right: -8px;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+        }
+    }
+
+    img.avatar {
+        border-color: $primaryColor;
+        &:hover {
+            border-color: $highlightColor;
+        }
+    }
+}

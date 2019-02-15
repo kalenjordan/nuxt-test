@@ -1,0 +1,81 @@
+.card {
+    top: 0;
+    text-align: left;
+    box-shadow: 0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3);
+    border-radius: 8px;
+    background-color: white;
+    overflow: hidden;
+    position: relative;
+
+    transition: all 0.25s ease;
+
+    &.hoverable:hover {
+        top: -5px;
+        box-shadow: 0 30px 60px -12px rgba(50,50,93,.25), 0 18px 36px -18px rgba(0,0,0,.3);
+    }
+
+    .card--background {
+        position: absolute;
+        width: 100%;
+        height: 50px;
+        z-index: 0;
+    }
+
+    .card--inner {
+        z-index: 1;
+        position: relative;
+
+        p {
+            &:first-child {
+                margin-top: 0;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .card--avatar {
+            z-index: 1;
+            img {
+                border: solid 3px $primaryColor;
+                &:hover {
+                    border-color: $primaryColorLight;
+                }
+                z-index: 1;
+                transition: all 0.25s ease;
+
+                border-radius: 50%;
+                max-width: 60px;
+                max-height: 60px;
+            }
+            .is-present {
+                right: 5px;
+                bottom: 6px;
+                color: green;
+                font-size: 1rem;
+            }
+        }
+
+        .card--cta {
+            float: right;
+            margin-top: -47px;
+        }
+
+        .card--about {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+        }
+
+        .card--tags {
+            overflow: hidden;
+            max-height: 55px;
+
+            margin: -1px -3px;
+            .tag {
+                margin: 1px 3px;
+            }
+        }
+    }
+}

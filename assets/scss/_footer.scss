@@ -1,0 +1,36 @@
+.footer {
+    color: $grayLight;
+
+    transition: all 0.25s ease;
+    @media screen and (min-width: 576px) {
+        opacity: 0.3;
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .footer--inner {
+        img.logo {
+            filter: grayscale(100);
+            width: 16rem;
+            opacity: 0.3;
+        }
+
+        .email-signup {
+            input.text {
+                background-color: white;
+
+                &::placeholder {
+                    color: $grayEvenLighter;
+                }
+            }
+
+            .btn {
+                color: inherit;
+                &:hover {
+                    color: white;
+                }
+            }
+        }
+    }
+}

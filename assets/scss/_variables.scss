@@ -1,0 +1,44 @@
+
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: "Nunito", sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+/** Reference: https://coolors.co/ffcb08-45b4c5-f8af70-ffffff-000000 */
+$black: #22292F;
+$grayDarker: #2E2E2E;
+$grayDark: #454545;
+$gray: #5C5C5C;
+$grayLight: #8B8B8B;
+$grayLighter: #d0d0d0;
+$grayEvenLighter: #E7E7E7;
+$grayLightest: #F5F5F5;
+
+$primaryColor: #7cdbd5;
+$primaryColorLight: #9FE4E0;
+$primaryColorLighter: #C3EEEB;
+$primaryColorLightest: #F3FBFB;
+
+$secondaryColorDark: #fbc000;
+$secondaryColor: #FACF47;
+$secondaryColorLight: #FACF47;
+$secondaryLighter: #FDF3D1;
+$secondaryEvenLighter: #fdf9ed;
+$secondaryColorLightest: #fffef8;
+
+$thirdColor: #02c8a7;
+
+$highlightColorDark: #C92935;
+$highlightColor: #F53240;
+$highlightColorLight: #F98F96;
+
+
+.border-gray-lighter {
+    border-color: $grayLighter;
+}
+.gray-lighter {
+    color: $grayLighter;
+}

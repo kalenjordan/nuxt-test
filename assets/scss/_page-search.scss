@@ -1,0 +1,42 @@
+.page-search {
+    .tag {
+        font-size: 0.75rem;
+    }
+
+    .card--inner {
+        .card--avatar {
+            flex: 0 0 70px;
+
+            .is-present {
+                right: 8%;
+                bottom: 20%;
+                color: green;
+                font-size: 13px;
+            }
+        }
+
+        .card--about {
+            flex-basis: 7rem;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+
+            // Had to inline style tag this because npm run watch is dropping it - rannnnndom
+            // -webkit-box-orient: vertical;
+        }
+
+        .card--tags {
+            flex-basis: auto;
+
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+
+            // @apply .ml-0 .mt-4;
+            @media screen and (min-width: 576px) {
+                // @apply .ml-4 .mt-0;
+                flex-basis: 0;
+            }
+        }
+    }
+}

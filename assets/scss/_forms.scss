@@ -1,0 +1,73 @@
+input.text, textarea.text {
+    border: 1px solid $grayEvenLighter;
+    border-radius: 5px;
+    transition: all 0.25s ease;
+
+    &::placeholder {
+        color: $grayLighter;
+    }
+}
+
+.toasted.toasted-primary {
+    background-color: $thirdColor !important;
+}
+
+.v--modal-overlay {
+    .v--modal {
+        padding: 2em;
+
+        ul {
+            list-style-type: none;
+        }
+    }
+}
+
+.tag-autocomplete {
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+
+    .v-select__selections {
+        .v-chip {
+            display: none;
+        }
+
+        input {
+            padding: 0.5em;
+            border: solid 1px $grayEvenLighter;
+            border-radius: 5px;
+        }
+    }
+
+    .v-select-list {
+        margin-top: 0.5em;
+        .v-list__tile__content {
+            padding: 0.25em;
+        }
+
+        .v-list__tile--highlighted .v-list__tile__content {
+            background-color: $grayLightest;
+        }
+    }
+
+    .v-input__append-inner {
+        display: none;
+    }
+
+}
+
+.can-edit {
+    .editable {
+        .edit-icon {
+            display: none;
+        }
+        &:hover {
+            // cursor: pointer;
+            .edit-icon {
+                display: inline;
+                // @apply .text-gray-light;
+            }
+        }
+    }
+}

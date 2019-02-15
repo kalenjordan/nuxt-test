@@ -1,7 +1,7 @@
 const pkg = require('./package')
 
 module.exports = {
-    mode: 'spa',
+    // mode: 'spa',
 
     /*
     ** Headers of the page
@@ -27,7 +27,8 @@ module.exports = {
     ** Global CSS
     */
     css: [
-        '~/assets/css/tailwind.css'
+        '~/assets/css/tailwind.css',
+        '@/assets/scss/app.scss',
     ],
 
     /*

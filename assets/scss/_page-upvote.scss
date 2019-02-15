@@ -1,0 +1,29 @@
+.page-upvote {
+    .hero {
+        h1 {
+            font-family: serif;
+            font-weight: normal;
+            font-style: italic;
+            font-size: 1.5rem;
+            @media screen and (min-width: 576px) {
+                font-size: 2rem;
+            }
+        }
+        p {
+            display: none;
+        }
+    }
+
+    p {
+        //@apply .mb-3;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .card {
+        h1 {
+            display: none;
+        }
+    }
+}

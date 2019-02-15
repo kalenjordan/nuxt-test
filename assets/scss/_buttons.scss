@@ -1,0 +1,51 @@
+a {
+    transition: all 0.25s ease;
+}
+
+.paragraph-link {
+    cursor: pointer;
+    color: inherit;
+    // @apply .no-underline;
+    display: inline-block;
+    // @apply .border-b-2 .border-secondary-lighter;
+
+    &:hover {
+        // @apply .border-secondary-light .bg-secondary-even-lighter;
+    }
+}
+
+p a {
+    @extend .paragraph-link;
+}
+
+a.naked-link {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+        text-decoration: underline;
+        color: $highlightColor;
+    }
+}
+
+a.no-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+a.btn {
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+
+    border-radius: 5px;
+    text-decoration: none;
+
+    color: $highlightColor;
+    display: inline-block;
+    transition: all 0.25s ease;
+
+    &:hover {
+        background-color: $highlightColor;
+        color: white;
+    }
+}

@@ -1,0 +1,65 @@
+.page-profile {
+    .header {
+        .avatar {
+            transition: all 0.25s ease;
+            @media screen and (min-width: 576px) {
+                &:hover {
+                    transform: scale(2);
+                }
+            }
+
+            img {
+                // @apply .border-4 .border-secondary;
+            }
+            .is-present {
+                color: green;
+                right: 9%;
+                bottom: 9%;
+                font-size: 1rem;
+
+                @media screen and (min-width: 576px) {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+
+
+    .tag {
+        margin: 1px 3px;
+        .tag-name {
+            padding-left: .75rem;
+        }
+        .count-and-upvote {
+            padding-right: .75rem;
+        }
+    }
+
+    .editable textarea {
+        height: 4em;
+        background: none;
+    }
+
+    .editable-about textarea {
+        height: 21em;
+        border: none;
+    }
+
+    p {
+        // @apply .mb-3;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .endorsements {
+        .avatar {
+            flex: 0 0 69px;
+        }
+
+        h1 {
+            // @apply .font-normal .italic .mb-2 .mt-3;
+            font-size: inherit;
+        }
+    }
+}

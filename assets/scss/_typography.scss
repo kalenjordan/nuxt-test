@@ -1,0 +1,60 @@
+h1, h2, h3 {
+    margin: 0;
+    line-height: 1.1;
+}
+
+h3 {
+    // @apply .mb-2 ;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.font-small, .font-80 {
+    font-size: 80%;
+}
+
+.font-70 {
+    font-size: 70%;
+}
+
+.font-80 {
+    font-size: 80%;
+}
+
+.font-90 {
+    font-size: 90%;
+}
+
+.font-100 {
+    font-size: 100%;
+}
+
+.font-120 {
+    font-size: 120%;
+}
+
+.font-150 {
+    font-size: 150%;
+}
+
+.font-200 {
+    font-size: 200%;
+}
+
+.font-15rem {
+    font-size: 1.5rem;
+}
+
+.opacity50 {
+    opacity: .7;
+}
+
+.opacity-70 {
+    opacity: .7;
+}
+
+.text-3rem {
+    font-size: 3rem;
+}

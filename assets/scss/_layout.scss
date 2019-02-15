@@ -1,0 +1,93 @@
+body, html {
+    margin: 0;
+    height: 100%;
+    // @apply .bg-secondary-lightest;
+    background-color: $secondaryColorLightest;
+    background-image: url("/images/black-thread-light.png");
+    background-repeat: repeat;
+    font-family: Nunito, sans-serif;
+}
+
+// Apparently this fixes some weird chrome mobile issues:
+// https://stackoverflow.com/questions/11289166/chrome-on-android-resizes-font
+html * {
+    max-height: 999999px;
+}
+
+.centered {
+    text-align: center;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(130, 128, 128, 0.48), rgba(0, 0, 0, 0));
+    margin-top: 3em;
+    margin-bottom: 3em;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-2 {
+    flex: 2;
+}
+
+.flex-3 {
+    flex: 3;
+}
+
+.flex-4 {
+    flex: 4;
+}
+
+.flex-5 {
+    flex: 5;
+}
+
+.flex-6 {
+    flex: 6;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.width-40p {
+    width: 40px;
+}
+
+.no-border {
+    border: none;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.relative {
+    position: relative;
+}
+
+.w-2rem {
+    width: 2rem;
+}
+
+.w-3rem {
+    width: 3rem;
+}
+
+.w-35rem {
+    width: 3.5rem;
+}
+
+.w-5rem {
+    width: 5rem;
+}
+
+.w-55rem {
+    width: 5.5rem;
+}

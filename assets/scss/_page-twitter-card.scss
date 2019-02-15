@@ -1,0 +1,100 @@
+.twitter-card {
+    padding-right: 35px !important;
+    width: 600px;
+    height: 300px;
+
+    img.logo {
+        top: 1rem;
+        right: 2rem;
+    }
+
+    h1 {
+        font-weight: normal;
+        font-style: italic;
+        line-height: inherit;
+    }
+}
+
+.twitter-card-bigger {
+    width: 900px;
+    height: 450px;
+
+    h1 {
+        font-size: 3rem;
+        font-weight: normal;
+        line-height: inherit;
+    }
+}
+
+.twitter-card-upvote {
+    img.logo {
+        top: 9rem;
+        right: 3rem;
+        width: 4rem;
+    }
+
+    img.avatar {
+        float: right;
+        margin-left: 2rem;
+        margin-right: 1rem;
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .message {
+        max-height: 18rem;
+        overflow: hidden;
+        line-height: 1.2;
+        font-size: 2.5rem;
+
+        h1 {
+            display: none;
+        }
+
+        &:before {
+            content:'';
+            width:75%;
+            height:100%;
+            position:absolute;
+            left:0;
+            top:0;
+            background:linear-gradient(transparent 10px, white);
+        }
+    }
+
+    .author-wrapper {
+        font-size: 1.3rem;
+        left: 4rem;
+        bottom: 3rem;
+
+        img {
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+}
+
+.twitter-card-saved-search {
+    background-color: $secondaryColorDark;
+    .logo-wrapper {
+        bottom: 2rem;
+        img {
+            width: 5rem;
+        }
+    }
+
+    .images {
+        margin-top: -2rem;
+        padding-left: 5rem;
+        padding-right: 3rem;
+
+        .avatar {
+            width: 8rem;
+            margin-left: -2rem;
+            margin-bottom: -2rem;
+        }
+    }
+}
+
+.twitter-card-user-profile {
+}
