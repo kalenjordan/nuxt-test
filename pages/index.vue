@@ -50,6 +50,13 @@
     // import Typewriter from 'typewriter-effect/dist/core';
     import TopNav from '~/components/TopNav.vue'
     import UserCard from '~/components/UserCard.vue'
+    import axios from 'axios'
+    import https from 'https'
+
+    // At request level
+    const agent = new https.Agent({
+        rejectUnauthorized: false
+    });
 
     export default {
         components: {
@@ -62,10 +69,19 @@
                 homeSavedSearch: {users: []},
             }
         },
+        asyncData() {
+            let url = process.env.API_URL + 'saved-searches/home?with_users=1';
+            return axios.get(url, { httpsAgent: agent })
+                .then((response) => {
+                    return {
+                        homeSavedSearch: response.data,
+                    }
+                })
+        },
         mounted() {
-            this.$axios.get(this.api('saved-searches/home?with_users=1')).then((response) => {
-                this.homeSavedSearch = response.data;
-            });
+            // this.$axios.get(this.api('saved-searches/home?with_users=1')).then((response) => {
+            //     this.homeSavedSearch = response.data;
+            // });
             this.$axios.get(this.api('saved-searches/home/related?with_users=1')).then((response) => {
                 this.savedSearches = response.data;
             });
