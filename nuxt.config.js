@@ -40,6 +40,7 @@ module.exports = {
     ** Nuxt.js modules
     */
     modules: [
+        '@nuxtjs/dotenv',
         '@nuxtjs/toast',
         'cookie-universal-nuxt',
         '@nuxtjs/axios',

@@ -18,7 +18,7 @@
                     <img v-if="loggedIn" class="animate avatar w-10 rounded-full cursor-pointer border-2"
                          @click="showingMenu = !showingMenu"
                          :src="loggedInUser.avatar_path">
-                    <a v-else class="btn px-5 py-2" href="/auth/linkedin" target="_blank">Login</a>
+                    <a v-else class="btn px-5 py-2" :href="authUrl" target="_blank">Login</a>
                 </div>
                 <div v-if="showingMenu" class="card logged-in-menu absolute">
                     <div class="card-inner p-3 font-120">
@@ -48,9 +48,6 @@
                 </div>
             </div>
             <!--<div class="ml-auto" v-if="isSearching" @blur="isSearching=0">-->
-                <!--<ais-index :app-id="process.env.MIX_ALGOLIA_APP_ID"-->
-                           <!--:api-key="process.env.MIX_ALGOLIA_PUBLIC_KEY"-->
-                           <!--:index-name="process.env.MIX_ALGOLIA_INDEX">-->
                     <!--<ais-search-box autofocus></ais-search-box>-->
                     <!--<ais-results results-per-page="2">-->
                         <!--<template slot-scope="{ result }">-->
@@ -83,6 +80,7 @@
             return {
                 isSearching: false,
                 showingMenu: false,
+                authUrl: process.env.AUTH_URL
             }
         },
         mounted() {
