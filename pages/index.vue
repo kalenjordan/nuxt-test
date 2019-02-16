@@ -6,6 +6,21 @@
                 {{ homeSavedSearch.name }}
             </h1>
         </section>
+        <section class="max-w-2xl mb-8 mx-auto">
+            <div class="user-cards m-2 mb-4 sm:mb-8 flex flex-wrap justify-center">
+                <user-card class="hoverable w-full sm:max-w-xs m-2"
+                           v-for="user in homeSavedSearch.users.slice(0, 6)"
+                           :user="user" :key="user.id"
+                ></user-card>
+            </div>
+            <div class="centered">
+                <router-link v-if="homeSavedSearch.query" class="btn px-5 py-2" :to="{name: 'search-query', params: { query: homeSavedSearch.query }}">
+                    See more
+                    <i class="fas fa-caret-right ml-2"></i>
+                </router-link>
+            </div>
+        </section>
+
         <hr class="mt-16 mb-16"/>
         <section class="max-w-3xl mb-8 mt-8 mx-auto">
             <h2 class="text-center mx-auto mb-8">About</h2>
@@ -34,10 +49,11 @@
 <script>
     // import Typewriter from 'typewriter-effect/dist/core';
     import TopNav from '~/components/TopNav.vue'
+    import UserCard from '~/components/UserCard.vue'
 
     export default {
         components: {
-            TopNav
+            TopNav, UserCard
         },
         data() {
             return {
@@ -47,10 +63,10 @@
             }
         },
         mounted() {
-            this.$axios.get('https://local.pros.global.test/api/v1/saved-searches/home?with_users=1').then((response) => {
+            this.$axios.get(this.api('saved-searches/home?with_users=1')).then((response) => {
                 this.homeSavedSearch = response.data;
             });
-            this.$axios.get('https://local.pros.global.test/api/v1/saved-searches/home/related?with_users=1').then((response) => {
+            this.$axios.get(this.api('saved-searches/home/related?with_users=1')).then((response) => {
                 this.savedSearches = response.data;
             });
             // let typewriter = new Typewriter('#typewriter', {
@@ -68,19 +84,27 @@
             //     .deleteChars(15)
             //     .start();
         },
-        // computed: {
-        //     loggedInUser: function () {
-        //         return this.$store.state.user;
-        //     },
-        //     unreadNotificationCount() {
-        //         return this.$store.state.unreadNotificationCount;
-        //     },
-        // },
-        // metaInfo() {
-        //     let notificationCount = this.unreadNotificationCount ? '(' + this.unreadNotificationCount + ') ' : '';
-        //     return {
-        //         title: notificationCount + window.app_name + " - Connect with awesome pros",
-        //     }
-        // },
+        methods: {
+            api(path) {
+                let url = process.env.API_URL + path;
+                url = url + (url.indexOf('?') ? '&' : '?') + 'api_token=' + this.loggedInUser.api_token;
+
+                return url;
+            },
+        },
+        computed: {
+            loggedInUser: function () {
+                return this.$store.state.user;
+            },
+            unreadNotificationCount() {
+                return this.$store.state.unreadNotificationCount;
+            },
+        },
+        metaInfo() {
+            let notificationCount = this.unreadNotificationCount ? '(' + this.unreadNotificationCount + ') ' : '';
+            return {
+                title: notificationCount + window.app_name + " - Connect with awesome pros",
+            }
+        },
     }
 </script>
