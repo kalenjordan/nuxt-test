@@ -1,7 +1,8 @@
 <template>
     <div class="notification-wrapper relative">
-        <i class="fas fa-bell text-gray-dark text-xl cursor-pointer font-120"
-           @click="toggleNotifications()"></i>
+        <i class="material-icons font-120 cursor-pointer" @click="toggleNotifications()">
+            notifications
+        </i>
         <span v-if="this.unreadNotificationCount" class="alert-bubble absolute bg-primary rounded-full cursor-pointer"
               @click="toggleNotifications()">
                         {{ this.unreadNotificationCount }}
@@ -55,8 +56,7 @@
         methods: {
             initNotificatons() {
                 if (this.loggedInUser.api_token) {
-                    let auth = '?api_token=' + this.loggedInUser.api_token;
-                    axios.get('/api/v1/notifications' + auth).then((response) => {
+                    this.$axios.get(this.api + '/notifications' + this.auth).then((response) => {
                         this.$store.commit('updateUnreadNotificationCount', response.data.unread_count);
                         this.$store.commit('updateNotifications', response.data.notifications);
                     });
@@ -80,13 +80,18 @@
             // },
             toggleNotifications() {
                 this.showingNotifications = !this.showingNotifications;
-                let auth = '?api_token=' + this.loggedInUser.api_token;
-                axios.get('/api/v1/notifications/mark-read' + auth).then((response) => {
+                this.$axios.get(this.api + '/notifications/mark-read' + this.auth).then((response) => {
                     this.$store.commit('updateUnreadNotificationCount', 0);
                 });
             },
         },
         computed: {
+            api() {
+                return 'https://local.pros.global.test/api/v1';
+            },
+            auth() {
+                return '?api_token=' + this.loggedInUser.api_token;
+            },
             loggedInUser() {
                 return this.$store.state.user;
             },

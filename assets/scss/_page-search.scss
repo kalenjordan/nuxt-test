@@ -32,9 +32,11 @@
             display: -webkit-box;
             -webkit-line-clamp: 3;
 
-            // @apply .ml-0 .mt-4;
+            margin-left: 0;
+            margin-top: 1rem;
             @media screen and (min-width: 576px) {
-                // @apply .ml-4 .mt-0;
+                margin-left: 1rem;
+                margin-top: 0;
                 flex-basis: 0;
             }
         }

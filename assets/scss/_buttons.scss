@@ -5,12 +5,13 @@ a {
 .paragraph-link {
     cursor: pointer;
     color: inherit;
-    // @apply .no-underline;
+    text-decoration: none;
     display: inline-block;
-    // @apply .border-b-2 .border-secondary-lighter;
+    border-bottom: 2px $secondaryColorLighter;
 
     &:hover {
-        // @apply .border-secondary-light .bg-secondary-even-lighter;
+        border-color: $secondaryColorLight;
+        background-color: $secondaryColorEvenLighter;
     }
 }
 

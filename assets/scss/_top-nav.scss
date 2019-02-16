@@ -9,15 +9,17 @@
     }
 
     .logged-in-menu {
+        position: absolute;
         z-index: 2;
-        top: 70px;
-        right: 0;
+        top: 6rem;
+        right: 2rem;
         width: 12rem;
     }
 
-    .fas {
+    i {
+        color: $grayLight;
         &:hover {
-            // @apply text-highlight;
+            color: $highlightColor;
         }
     }
 

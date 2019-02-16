@@ -22,16 +22,12 @@
                          :src="loggedInUser.avatar_path">
                     <a v-else class="btn px-5 py-2" :href="authUrl" target="_blank">Login</a>
                 </div>
-                <div v-if="showingMenu" class="card logged-in-menu absolute">
+                <div v-if="showingMenu" class="card logged-in-menu">
                     <div class="card-inner p-3 font-120">
                         <div class="block p-2">
-                            <router-link class="naked-link" v-if="loggedIn"
-                                         :to="{name: 'profile', params: {username: loggedInUser.username}}">
+                            <router-link class="naked-link" v-if="loggedIn" :to="{path: '/' + loggedInUser.username}">
                                 View Profile
                             </router-link>
-                        </div>
-                        <div class="block p-2">
-                            <router-link class="naked-link" :to="{name: 'saved-searches'}">Saved Searches</router-link>
                         </div>
                         <div class="block p-2">
                             <a href="javascript://" class="naked-link" @click="logout">Log out</a>
@@ -42,7 +38,7 @@
             <div class="ml-auto" v-if="isSearching" @blur="isSearching=0">
                 <ais-index :app-id="algoliaAppID" :api-key="algoliaPublicKey" :index-name="algoliaIndexName">
                     <ais-search-box autofocus></ais-search-box>
-                    <ais-results results-per-page="2">
+                    <ais-results>
                         <template slot-scope="{ result }">
                             <router-link class="no-link" :to="{path: result.url}">
                                 <img v-if="result.type==='user'" class="w-8 rounded-full" :src="result.avatar_path">
@@ -71,7 +67,7 @@
                 isSearching: false,
                 showingMenu: false,
                 authUrl: process.env.AUTH_URL,
-                algoliaAppID: process.env.MIX_ALGOLIA_APP_ID,
+                algoliaAppID: process.env.ALGOLIA_APP_ID,
                 algoliaPublicKey: process.env.ALGOLIA_PUBLIC_KEY,
                 algoliaIndexName: process.env.ALGOLIA_INDEX_NAME,
             }
@@ -93,6 +89,10 @@
                 });
             },
             hotkeys(e) {
+                if (e.key === 'Escape') {
+                    this.isSearching = false;
+                    this.$refs.search.blur();
+                }
                 if (document.activeElement.id === 'top-nav-search') {
                     if (e.key === 'Enter') {
                         this.search();
@@ -119,6 +119,7 @@
                 return (this.loggedInUser.is_admin || this.loggedInUser.being_impersonated);
             },
             logout() {
+                this.showingMenu = false;
                 this.$cookies.set('user', null);
                 this.$store.commit('updateUser', {});
                 this.$toast.show("You're logged out! Don't be a stranger now, ya hear? 🤠", {duration: 2000});

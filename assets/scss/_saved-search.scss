@@ -35,7 +35,9 @@
                     height: 4rem;
                     font-size: 2rem;
                     color: white;
-                    // @apply .rounded-full .bg-secondary .border-2 .border-secondary-light;
+                    border-radius: 50%;
+                    background-color: $secondaryColor;
+                    border: solid 2px $secondaryColorLight;
                 }
             }
         }
@@ -47,9 +49,9 @@
                 .mini-card {
                     border-radius: 5px;
                     transition: all 0.25s ease;
-                    // @apply .bg-gray-lightest;
+                    background-color: $grayLightest;
                     &:hover {
-                        // @apply .bg-gray-lighter;
+                        background-color: $grayLighter;
                     }
 
                     .headline {
@@ -57,6 +59,7 @@
                         display: -webkit-box;
                         -webkit-line-clamp: 3;
                         line-height: 1rem;
+                        // -webkit-box-orient: vertical;
 
                         // Had to inline style tag this because npm run watch is dropping it - rannnnndom
                         // -webkit-box-orient: vertical;

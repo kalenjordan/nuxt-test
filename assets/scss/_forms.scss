@@ -62,12 +62,5 @@ input.text, textarea.text {
         .edit-icon {
             display: none;
         }
-        &:hover {
-            // cursor: pointer;
-            .edit-icon {
-                display: inline;
-                // @apply .text-gray-light;
-            }
-        }
     }
 }

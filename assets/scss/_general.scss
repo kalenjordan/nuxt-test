@@ -6,6 +6,6 @@
     display: none;
 }
 
-img, .animated {
-    transition: 0.25s all;
+img, .animated, i {
+    transition: 0.25s all ease;
 }
