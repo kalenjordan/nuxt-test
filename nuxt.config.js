@@ -1,4 +1,5 @@
 const pkg = require('./package')
+require('dotenv').config()
 
 module.exports = {
     // mode: 'spa',
@@ -7,15 +8,21 @@ module.exports = {
     ** Headers of the page
     */
     head: {
-        title: pkg.name,
+        title: process.env.APP_NAME,
         meta: [
             {charset: 'utf-8'},
             {name: 'viewport', content: 'width=device-width, initial-scale=1'},
             {hid: 'description', name: 'description', content: pkg.description}
         ],
         link: [
-            {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+            {rel: 'icon', type: 'image/x-icon', href: process.env.FAVICON}
         ]
+    },
+
+    vue: {
+        config: {
+            productionTip: false,
+        }
     },
 
     /*
@@ -34,12 +41,15 @@ module.exports = {
     /*
     ** Plugins to load before mounting the App
     */
-    plugins: [],
+    plugins: [
+        '~/plugins/vue-instantsearch'
+    ],
 
     /*
     ** Nuxt.js modules
     */
     modules: [
+        'nuxt-material-design-icons',
         '@nuxtjs/dotenv',
         '@nuxtjs/toast',
         'cookie-universal-nuxt',
@@ -73,15 +83,4 @@ module.exports = {
             // }
         }
     }
-    ,
-// generate: {
-//   routes: function () {
-//     return this.$axios.get('https://local.pros.global.test/api/v1/users')
-//       .then((response) => {
-//         return response.data.map((user) => {
-//           return '/users/' + user.id
-//         })
-//       })
-//   }
-// }
 }

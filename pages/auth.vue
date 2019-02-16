@@ -20,7 +20,9 @@
             this.$axios.get('https://local.pros.global.test/api/v1/me?' + auth).then((response) => {
                 this.user = response.data;
                 this.$cookies.set('user', JSON.stringify(response.data));
+                window.opener.location.reload();
+                window.close();
             });
-        }
+        },
     }
 </script>
