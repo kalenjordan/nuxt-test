@@ -1,5 +1,5 @@
 <template>
-    <div class="notification-wrapper relative">
+    <div class="notification-wrapper">
         <i class="material-icons font-120 cursor-pointer" @click="toggleNotifications()">
             notifications
         </i>

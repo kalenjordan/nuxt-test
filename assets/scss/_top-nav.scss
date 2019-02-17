@@ -25,9 +25,10 @@
 
     .notification-wrapper {
         .notification-list {
+            position: absolute;
             z-index: 2;
-            top: 28px;
-            right: 0;
+            top: 6rem;
+            right: 6rem;
         }
 
         .alert-bubble {
