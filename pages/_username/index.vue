@@ -101,23 +101,18 @@
             }
         },
         async asyncData({params}) {
-            let url = process.env.API_URL + 'users/' + params.username;
-
-            let { data } = await axios.get(url)
-            return { user: data }
-            // return axios.get(url)
-            //     .then((response) => {
-            //         return {
-            //             user: response.data,
-            //         }
-            //     })
+            if (process.server) {
+                let url = process.env.API_URL + 'users/' + params.username;
+                let { data } = await axios.get(url);
+                return { user: data };
+            }
         },
         mounted() {
             window.addEventListener('keyup', this.hotkeys);
 
-            // this.$axios.get(this.api + '/users/' + this.$route.params.username + this.auth).then((response) => {
-            //     this.user = response.data;
-            // });
+            this.$axios.get(this.api + '/users/' + this.$route.params.username + this.auth).then((response) => {
+                this.user = response.data;
+            });
 
             // window.Events.$on('upvote-added', (upvote, allUpvotes) => {
             //     this.user.upvotes = allUpvotes;

@@ -53,6 +53,7 @@
             </div>
         </section>
         <hr class="mt-16 mb-16"/>
+        <footer-section></footer-section>
     </div>
 </template>
 
@@ -60,6 +61,7 @@
     import TopNav from '~/components/TopNav.vue'
     import UserCard from '~/components/UserCard.vue'
     import SavedSearchCard from '~/components/SavedSearchCard.vue'
+    import FooterSection from '~/components/FooterSection.vue'
 
     let Typewriter;
     if (process.browser) {
@@ -70,7 +72,7 @@
 
     export default {
         components: {
-            TopNav, UserCard, SavedSearchCard
+            TopNav, UserCard, SavedSearchCard, FooterSection
         },
         data() {
             return {

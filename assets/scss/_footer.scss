@@ -1,7 +1,6 @@
 .footer {
     color: $grayLight;
 
-    transition: all 0.25s ease;
     @media screen and (min-width: 576px) {
         opacity: 0.3;
         &:hover {
