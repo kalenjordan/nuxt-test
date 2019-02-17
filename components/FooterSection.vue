@@ -66,21 +66,24 @@
                 <div class="text-2xl gray-lighter mb-4">
                     <a class="naked-link mr-2" href="https://twitter.com/kalenjordan"><i class="fab fa-twitter"></i></a>
                     <a class="naked-link mr-2" href="https://github.com/kalenjordan/pros.global"><i class="fab fa-github"></i></a>
-                    <a class="naked-link mr-2" href="https://www.linkedin.com/company/35561588/"><i class="fab fa-linkedin"></i></a>
+                    <a class="naked-link mr-2" href="https://www.linkedin.com/company/35561588/">
+                        <i class="material-icons">facebook-box</i>
+                    </a>
                 </div>
                 <div class="mb-4">
                     <ul class="list-reset">
-                        <li>
+                        <li class="pb-2">
                             <router-link class="naked-link" :to="{ path: '/search'}">Search</router-link>
                         </li>
-                        <li>
-                            <keyboard-shortcuts></keyboard-shortcuts>
+                        <li class="pb-2">
+                            <a class="naked-link" href="javascript://" @click="showKeyboardShortcuts()">Keyboard shortcuts</a>
                         </li>
                     </ul>
                 </div>
                 <div v-if="this.loggedInUser && this.loggedInUser.is_admin">
-                    <a v-if="user" class="my-2 naked-link" href="javascript://" @click="mergeUser">Merge user</a>
-                    <a class="my-2 naked-link" href="javascript://" @click="addUser">Add user</a>
+                    <div class="mb-2">Admin Tasks</div>
+                    <a v-if="user" class="mb-2 naked-link" href="javascript://" @click="mergeUser">Merge user</a>
+                    <a class="mb-2 naked-link" href="javascript://" @click="addUser">Add user</a>
                 </div>
             </div>
         </div>
@@ -139,6 +142,9 @@
                 url = url + (url.indexOf('?') ? '&' : '?') + 'api_token=' + this.loggedInUser.api_token;
 
                 return url;
+            },
+            showKeyboardShortcuts() {
+                this.$modal.show('help');
             },
         },
         computed: {

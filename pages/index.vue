@@ -54,6 +54,7 @@
         </section>
         <hr class="mt-16 mb-16"/>
         <footer-section></footer-section>
+        <keyboard-shortcuts></keyboard-shortcuts>
     </div>
 </template>
 
@@ -62,6 +63,7 @@
     import UserCard from '~/components/UserCard.vue'
     import SavedSearchCard from '~/components/SavedSearchCard.vue'
     import FooterSection from '~/components/FooterSection.vue'
+    import KeyboardShortcuts from '~/components/KeyboardShortcuts';
 
     let Typewriter;
     if (process.browser) {
@@ -72,7 +74,7 @@
 
     export default {
         components: {
-            TopNav, UserCard, SavedSearchCard, FooterSection
+            TopNav, UserCard, SavedSearchCard, FooterSection, KeyboardShortcuts
         },
         data() {
             return {
