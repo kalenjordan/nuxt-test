@@ -42,7 +42,8 @@ module.exports = {
     ** Plugins to load before mounting the App
     */
     plugins: [
-        '~/plugins/vue-instantsearch'
+        '~/plugins/vue-instantsearch',
+        '~/plugins/vue-js-modal',
     ],
 
     /*

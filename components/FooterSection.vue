@@ -73,6 +73,9 @@
                         <li>
                             <router-link class="naked-link" :to="{ path: '/search'}">Search</router-link>
                         </li>
+                        <li>
+                            <keyboard-shortcuts></keyboard-shortcuts>
+                        </li>
                     </ul>
                 </div>
                 <div v-if="this.loggedInUser && this.loggedInUser.is_admin">
@@ -85,7 +88,12 @@
 </template>
 
 <script>
+    import KeyboardShortcuts from "../components/KeyboardShortcuts";
+
     export default {
+        components: {
+            KeyboardShortcuts,
+        },
         props: ['user'],
         data() {
             return {

@@ -15,7 +15,7 @@
             </div>
             <div class="centered">
                 <router-link v-if="homeSavedSearch.query" class="btn px-5 py-2 bold"
-                             :to="{name: 'search-query', params: { query: homeSavedSearch.query }}">
+                             :to="{ path: 'search?q=' + homeSavedSearch.query }">
                     See more
                     <i class="material-icons align-middle" style="margin-right: -7px;">keyboard_arrow_right</i>
                 </router-link>
