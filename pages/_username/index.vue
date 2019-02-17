@@ -103,12 +103,14 @@
         async asyncData({params}) {
             let url = process.env.API_URL + 'users/' + params.username;
 
-            return axios.get(url)
-                .then((response) => {
-                    return {
-                        user: response.data,
-                    }
-                })
+            let { data } = await axios.get(url)
+            return { user: data }
+            // return axios.get(url)
+            //     .then((response) => {
+            //         return {
+            //             user: response.data,
+            //         }
+            //     })
         },
         mounted() {
             window.addEventListener('keyup', this.hotkeys);

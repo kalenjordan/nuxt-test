@@ -14,10 +14,20 @@
                 ></user-card>
             </div>
             <div class="centered">
-                <router-link v-if="homeSavedSearch.query" class="btn px-5 py-2" :to="{name: 'search-query', params: { query: homeSavedSearch.query }}">
+                <router-link v-if="homeSavedSearch.query" class="btn px-5 py-2 bold"
+                             :to="{name: 'search-query', params: { query: homeSavedSearch.query }}">
                     See more
-                    <i class="fas fa-caret-right ml-2"></i>
+                    <i class="material-icons align-middle" style="margin-right: -7px;">keyboard_arrow_right</i>
                 </router-link>
+            </div>
+        </section>
+
+        <hr class="mt-16 mb-16"/>
+        <section class="max-w-3xl mb-8 mx-auto">
+            <div class="saved-searches m-2 mb-4 sm:mb-8 flex flex-wrap justify-center">
+                <saved-search-card class="mb-12 m-4" v-for="savedSearch in savedSearches" :key="savedSearches.id"
+                                   :savedSearch="savedSearch"
+                                   ></saved-search-card>
             </div>
         </section>
 
@@ -47,31 +57,34 @@
 </template>
 
 <script>
-    // import Typewriter from 'typewriter-effect/dist/core';
     import TopNav from '~/components/TopNav.vue'
     import UserCard from '~/components/UserCard.vue'
-    import axios from 'axios'
-    import https from 'https'
+    import SavedSearchCard from '~/components/SavedSearchCard.vue'
 
-    // At request level
-    const agent = new https.Agent({
-        rejectUnauthorized: false
-    });
+    let Typewriter;
+    if (process.browser) {
+        Typewriter = require('typewriter-effect/dist/core')
+    }
+
+    import axios from 'axios'
 
     export default {
         components: {
-            TopNav, UserCard
+            TopNav, UserCard, SavedSearchCard
         },
         data() {
             return {
-                users: [],
                 savedSearches: [],
                 homeSavedSearch: {users: []},
             }
         },
-        asyncData() {
+        async asyncData() {
+            if (! process.server) {
+                return {homeSavedSearch: {users: []}};
+            }
+
             let url = process.env.API_URL + 'saved-searches/home?with_users=1';
-            return axios.get(url, { httpsAgent: agent })
+            return axios.get(url)
                 .then((response) => {
                     return {
                         homeSavedSearch: response.data,
@@ -79,28 +92,34 @@
                 })
         },
         mounted() {
-            // this.$axios.get(this.api('saved-searches/home?with_users=1')).then((response) => {
-            //     this.homeSavedSearch = response.data;
-            // });
+            this.$axios.get(this.api('saved-searches/home?with_users=1')).then((response) => {
+                this.homeSavedSearch = response.data;
+            });
             this.$axios.get(this.api('saved-searches/home/related?with_users=1')).then((response) => {
                 this.savedSearches = response.data;
             });
-            // let typewriter = new Typewriter('#typewriter', {
-            //     loop: true
-            // });
-            //
-            // typewriter.typeString('Connect with awesome founders.')
-            //     .pauseFor(700)
-            //     .deleteChars(9)
-            //     .typeString('developers.')
-            //     .pauseFor(700)
-            //     .deleteChars(11)
-            //     .typeString('eCommerce pros.')
-            //     .pauseFor(700)
-            //     .deleteChars(15)
-            //     .start();
+
+            if (process.browser) {
+                this.initTypewriter();
+            }
         },
         methods: {
+            initTypewriter() {
+                let typewriter = new Typewriter('#typewriter', {
+                    loop: true
+                });
+
+                typewriter.typeString('Connect with awesome founders.')
+                    .pauseFor(700)
+                    .deleteChars(9)
+                    .typeString('developers.')
+                    .pauseFor(700)
+                    .deleteChars(11)
+                    .typeString('eCommerce pros.')
+                    .pauseFor(700)
+                    .deleteChars(15)
+                    .start();
+            },
             api(path) {
                 let url = process.env.API_URL + path;
                 url = url + (url.indexOf('?') ? '&' : '?') + 'api_token=' + this.loggedInUser.api_token;

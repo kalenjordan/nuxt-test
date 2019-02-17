@@ -23,6 +23,7 @@
     "cross-env": "^5.2.0",
     "nuxt": "^2.4.0",
     "nuxt-material-design-icons": "^1.0.4",
+    "typewriter-effect": "^2.5.2",
     "vue-instantsearch": "^1.7.0",
     "vue-toasted": "^1.1.26"
   },

@@ -33,11 +33,14 @@
                     justify-content: center;
                     width: 4rem;
                     height: 4rem;
-                    font-size: 2rem;
                     color: white;
                     border-radius: 50%;
                     background-color: $secondaryColor;
                     border: solid 2px $secondaryColorLight;
+
+                    i {
+                        font-size: 2.5rem;
+                    }
                 }
             }
         }
