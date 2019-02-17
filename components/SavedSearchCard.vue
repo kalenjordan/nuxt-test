@@ -2,10 +2,10 @@
     <div class="card saved-search-card hoverable">
         <div class="card--background bg-secondary">
             <h3 class="text-center">
-                <router-link v-if="savedSearch.slug" class="naked-link" :to="{name: 'saved-search', params: {slug: savedSearch.slug}}">
+                <router-link v-if="savedSearch.slug" class="naked-link" :to="{ path: '/s/' + savedSearch.slug }">
                     {{ savedSearch.name }}
                 </router-link>
-                <router-link v-else class="naked-link" :to="{name: 'saved-search', params: {slug: savedSearch.id}}">
+                <router-link v-else class="naked-link" :to="{ path: '/s/' + savedSearch.id }">
                     {{ savedSearch.name }}
                 </router-link>
             </h3>

@@ -62,8 +62,27 @@ module.exports = {
     */
     axios: {
         // See https://github.com/nuxt-community/axios-module#options
-    }
-    ,
+    },
+
+    router: {
+        extendRoutes (routes, resolve) {
+            routes.push({
+                name: 'home',
+                path: '/',
+                component: resolve(__dirname, 'pages/home.vue')
+            });
+            routes.push({
+                name: 'saved-search',
+                path: '/s/:slug',
+                component: resolve(__dirname, 'pages/saved-search.vue')
+            });
+            routes.push({
+                name: 'profile',
+                path: '/:username',
+                component: resolve(__dirname, 'pages/profile.vue')
+            });
+        },
+    },
 
     /*
     ** Build configuration
