@@ -110,7 +110,7 @@
         mounted() {
             window.addEventListener('keyup', this.hotkeys);
 
-            this.$axios.get(this.api + '/users/' + this.$route.params.username + this.auth).then((response) => {
+            this.$axios.get(this.api('users/' + this.$route.params.username)).then((response) => {
                 this.user = response.data;
             });
 
@@ -141,7 +141,7 @@
 
                 this.$toast.show('Saved profile!', {duration: 5000, position: "bottom-right"});
 
-                this.$axios.post(this.api + "/users/" + this.user.username + this.auth, {
+                this.$axios.post(this.api("/users/" + this.user.username), {
                     'data': this.user
                 });
             },
@@ -160,6 +160,13 @@
                     }
                 }
             },
+            api(path) {
+                let url = process.env.API_URL + path;
+                url = url + (url.indexOf('?') ? '&' : '?') + 'api_token=' + this.loggedInUser.api_token;
+
+                return url;
+            },
+
             // isPresent(user) {
             //     let ids = [];
             //     let presentUsers = this.presentUsers;
@@ -172,12 +179,6 @@
         computed: {
             hasUpvotes: function () {
                 return this.user.upvotes && this.user.upvotes.length;
-            },
-            api() {
-                return 'https://local.pros.global.test/api/v1';
-            },
-            auth() {
-                return '?api_token=' + this.loggedInUser.api_token;
             },
             loggedIn() {
                 return this.$store.state.user && this.$store.state.user.id;

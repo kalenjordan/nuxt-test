@@ -56,7 +56,7 @@
         methods: {
             initNotificatons() {
                 if (this.loggedInUser.api_token) {
-                    this.$axios.get(this.api + '/notifications' + this.auth).then((response) => {
+                    this.$axios.get(this.api('notifications')).then((response) => {
                         this.$store.commit('updateUnreadNotificationCount', response.data.unread_count);
                         this.$store.commit('updateNotifications', response.data.notifications);
                     });
@@ -80,18 +80,18 @@
             // },
             toggleNotifications() {
                 this.showingNotifications = !this.showingNotifications;
-                this.$axios.get(this.api + '/notifications/mark-read' + this.auth).then((response) => {
+                this.$axios.get(this.api('notifications/mark-read')).then((response) => {
                     this.$store.commit('updateUnreadNotificationCount', 0);
                 });
             },
+            api(path) {
+                let url = process.env.API_URL + path;
+                url = url + (url.indexOf('?') !== -1 ? '&' : '?') + 'api_token=' + this.loggedInUser.api_token;
+
+                return url;
+            },
         },
         computed: {
-            api() {
-                return 'https://local.pros.global.test/api/v1';
-            },
-            auth() {
-                return '?api_token=' + this.loggedInUser.api_token;
-            },
             loggedInUser() {
                 return this.$store.state.user;
             },
