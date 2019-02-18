@@ -15,7 +15,7 @@
             </div>
             <div class="centered">
                 <router-link v-if="homeSavedSearch.query" class="btn px-5 py-2 bold"
-                             :to="{ path: 'search?q=' + homeSavedSearch.query }">
+                             :to="{ path: '/search?q=' + homeSavedSearch.query }">
                     See more
                     <i class="material-icons align-middle" style="margin-right: -7px;">keyboard_arrow_right</i>
                 </router-link>
@@ -95,6 +95,18 @@
                     }
                 })
         },
+        head() {
+            return {
+                title: process.env.APP_NAME + " - Connect with awesome pros",
+                meta: [
+                    {
+                        hid: 'description',
+                        name: 'description',
+                        content: "Connect with awesome founders, developers, and eCommerce professionals",
+                    },
+                ]
+            }
+        },
         mounted() {
             this.$axios.get(this.$api('saved-searches/home?with_users=1')).then((response) => {
                 this.homeSavedSearch = response.data;
@@ -132,12 +144,6 @@
             unreadNotificationCount() {
                 return this.$store.state.unreadNotificationCount;
             },
-        },
-        metaInfo() {
-            let notificationCount = this.unreadNotificationCount ? '(' + this.unreadNotificationCount + ') ' : '';
-            return {
-                title: notificationCount + window.app_name + " - Connect with awesome pros",
-            }
         },
     }
 </script>

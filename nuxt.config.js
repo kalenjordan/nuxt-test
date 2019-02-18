@@ -73,19 +73,24 @@ module.exports = {
     router: {
         extendRoutes (routes, resolve) {
             routes.push({
-                name: 'home',
+                //name: 'home', // don't want to name it this b/c it collides with default name based on filename home.vue
                 path: '/',
                 component: resolve(__dirname, 'pages/home.vue')
             });
             routes.push({
-                name: 'saved-search',
+                // name: 'saved-search',
                 path: '/s/:slug',
                 component: resolve(__dirname, 'pages/saved-search.vue')
             });
             routes.push({
-                name: 'profile',
+                // name: 'profile',
                 path: '/:username',
                 component: resolve(__dirname, 'pages/profile.vue')
+            });
+            routes.push({
+                // name: 'tag',
+                path: '/tag/:slug',
+                component: resolve(__dirname, 'pages/tag.vue')
             });
         },
     },

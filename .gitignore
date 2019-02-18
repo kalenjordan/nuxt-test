@@ -1,5 +1,6 @@
 /package-lock.json
 /static/avatars/*
+/fabfile.pyc
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template

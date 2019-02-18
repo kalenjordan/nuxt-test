@@ -107,6 +107,23 @@
                 return { user: data };
             }
         },
+        head() {
+            return {
+                title: this.user.name + " | pros.global",
+                meta: [
+                    {
+                        hid: 'description',
+                        name: 'description',
+                        content: this.user.headline,
+                    },
+                    {
+                        hid: 'og:description',
+                        name: 'og:description',
+                        content: this.user.headline,
+                    },
+                ]
+            }
+        },
         mounted() {
             window.addEventListener('keyup', this.hotkeys);
 
@@ -202,12 +219,6 @@
             },
             linkedInUrl() {
                 return 'https://www.linkedin.com/search/results/all/?keywords=' + this.user.name;
-            }
-        },
-        metaInfo() {
-            let notificationCount = this.unreadNotificationCount ? '(' + this.unreadNotificationCount + ') ' : '';
-            return {
-                title: notificationCount + this.user.name + " | pros.global",
             }
         },
     }
