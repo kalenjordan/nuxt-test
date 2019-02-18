@@ -9,7 +9,7 @@
                     pros.global is a matchmaking platform for founders, eCommerce professionals,
                     and software developers
                     being built by
-                    <router-link :to="{ name: 'profile', params: {username: 'kalenjordan'}}">Kalen</router-link>
+                    <router-link :to="{ path: '/kalenjordan' }">Kalen</router-link>
                     with &hearts; in
                     <router-link :to="{ name: 'saved-search', params: {slug: 'austin'}}">Austin</router-link>
                     .
@@ -132,8 +132,7 @@
                     'name': name,
                 }).then((response) => {
                     this.$router.push({
-                        name: 'profile',
-                        params: {username: response.data.username},
+                        path: '/' + response.data.username,
                     });
                 });
             },

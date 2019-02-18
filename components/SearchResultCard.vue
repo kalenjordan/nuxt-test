@@ -2,14 +2,14 @@
     <div class="card user-card">
         <div class="card--inner flex items-center p-4 flex-wrap">
             <div class="card--avatar flex-2 text-center -ml-1">
-                <router-link class="relative" :to="{ name: 'profile', params: { username: user.username }}">
+                <router-link class="relative" :to="{ path: '/' + user.username }">
                     <img v-bind:src="user.avatar_path">
                     <i v-if="this.isPresent(user)" class="absolute is-present fas fa-circle"></i>
                 </router-link>
             </div>
             <div class="flex-3 card--about text-sm sm:ml-2 leading-tight" style="-webkit-box-orient: vertical;" >
                 <div class="card--identity--name bold">
-                    <router-link :to="{ name: 'profile', params: { username: user.username }}" class="naked-link">
+                    <router-link :to="{ path: '/' + user.username }" class="naked-link">
                         {{ user.name }}
                     </router-link>
                 </div>

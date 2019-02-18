@@ -3,7 +3,7 @@
         <top-nav class="m-4 sm:m-8" :user="user">
             <div v-if="editing" class="edit-profile-wrapper m-1 inline-block">
                 <div class="inline-block mr-3">
-                    <a class="paragraph-link mr-3" @click="cancelEditing()" >
+                    <a class="paragraph-link mr-3" @click="cancelEditing()">
                         Cancel
                     </a>
                     <a class="btn px-5 py-2" @click="save">Save</a>
@@ -62,8 +62,8 @@
                             <div class="inline-tag">{{ upvote.tag_name }}</div>
                             <div class="inline text-gray-light">
                                 <!--<router-link class="naked-link text-xs ml-1"-->
-                                             <!--:to="{name: 'upvote', params: {id: upvote.id}}">-->
-                                    <!--&lt;!&ndash;{{ upvote.created_at | moment("subtract", "6 hours") | moment('from') }}&ndash;&gt;-->
+                                <!--:to="{name: 'upvote', params: {id: upvote.id}}">-->
+                                <!--&lt;!&ndash;{{ upvote.created_at | moment("subtract", "6 hours") | moment('from') }}&ndash;&gt;-->
                                 <!--</router-link>-->
                             </div>
                         </div>
@@ -110,7 +110,7 @@
         mounted() {
             window.addEventListener('keyup', this.hotkeys);
 
-            this.$axios.get(this.api('users/' + this.$route.params.username)).then((response) => {
+            this.$axios.get(this.$api('users/' + this.$route.params.username)).then((response) => {
                 this.user = response.data;
             });
 
@@ -141,9 +141,12 @@
 
                 this.$toast.show('Saved profile!', {duration: 5000, position: "bottom-right"});
 
-                this.$axios.post(this.api("/users/" + this.user.username), {
+                this.$axios.post(this.$api("users/" + this.user.username), {
                     'data': this.user
-                });
+                }, {headers: {"Content-Type": "application/x-www-form-urlencoded",}}).then((response) => {
+                        console.log(response);
+                    }
+                );
             },
             markdown: function (content) {
                 return content;
@@ -159,12 +162,6 @@
                         this.editIfOwner();
                     }
                 }
-            },
-            api(path) {
-                let url = process.env.API_URL + path;
-                url = url + (url.indexOf('?') ? '&' : '?') + 'api_token=' + this.loggedInUser.api_token;
-
-                return url;
             },
 
             // isPresent(user) {
@@ -183,14 +180,14 @@
             loggedIn() {
                 return this.$store.state.user && this.$store.state.user.id;
             },
-            loggedInUser: function() {
+            loggedInUser: function () {
                 return this.$store.state.user;
             },
             // presentUsers() {
             //     return this.$store.state.presentUsers;
             // },
             canEdit() {
-                if (! this.loggedIn) {
+                if (!this.loggedIn) {
                     return false;
                 }
 
@@ -207,7 +204,7 @@
                 return 'https://www.linkedin.com/search/results/all/?keywords=' + this.user.name;
             }
         },
-        metaInfo () {
+        metaInfo() {
             let notificationCount = this.unreadNotificationCount ? '(' + this.unreadNotificationCount + ') ' : '';
             return {
                 title: notificationCount + this.user.name + " | pros.global",

@@ -4,6 +4,11 @@ require('dotenv').config()
 module.exports = {
     // mode: 'spa',
 
+    server: {
+        port: 3000, // default: 3000
+        host: '0.0.0.0', // default: localhost
+    },
+
     /*
     ** Headers of the page
     */
@@ -44,6 +49,7 @@ module.exports = {
     plugins: [
         '~/plugins/vue-instantsearch',
         '~/plugins/vue-js-modal',
+        '~/plugins/vue-inject',
     ],
 
     /*

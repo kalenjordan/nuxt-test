@@ -120,8 +120,7 @@
                 this.$axios.get(this.api('twitter/add-user/' + this.$refs.twitterUsername.value)).then((response) => {
                     if (response.data.username) {
                         this.$router.push({
-                            name: 'profile',
-                            params: {username: response.data.username},
+                            path: '/' + response.data.username,
                         });
                     } else if (response.data.message) {
                         alert(response.data.message);
