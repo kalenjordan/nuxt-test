@@ -49,6 +49,7 @@ module.exports = {
     plugins: [
         '~/plugins/vue-instantsearch',
         '~/plugins/vue-js-modal',
+        '~/plugins/vue-moment',
         '~/plugins/vue-inject',
     ],
 
@@ -63,6 +64,7 @@ module.exports = {
         '@nuxtjs/axios',
         '@nuxtjs/pwa'
     ],
+
     /*
     ** Axios module configuration
     */
@@ -91,6 +93,11 @@ module.exports = {
                 // name: 'tag',
                 path: '/tag/:slug',
                 component: resolve(__dirname, 'pages/tag.vue')
+            });
+            routes.push({
+                // name: 'upvote',
+                path: '/upvotes/:id',
+                component: resolve(__dirname, 'pages/upvote.vue')
             });
         },
     },

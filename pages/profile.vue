@@ -61,10 +61,10 @@
                             <div v-else class="mb-2">{{ upvote.author_firstname }} upvoted</div>
                             <div class="inline-tag">{{ upvote.tag_name }}</div>
                             <div class="inline text-gray-light">
-                                <!--<router-link class="naked-link text-xs ml-1"-->
-                                <!--:to="{name: 'upvote', params: {id: upvote.id}}">-->
-                                <!--&lt;!&ndash;{{ upvote.created_at | moment("subtract", "6 hours") | moment('from') }}&ndash;&gt;-->
-                                <!--</router-link>-->
+                                <router-link class="naked-link text-xs ml-1"
+                                :to="{ path: 'upvotes/' + upvote.id }">
+                                {{ upvote.created_at | moment("subtract", "6 hours") | moment('from') }}
+                                </router-link>
                             </div>
                         </div>
                     </div>
@@ -80,18 +80,21 @@
 
         <!--<chat-wrapper :user="user"></chat-wrapper>-->
         <hr class="mt-16 mb-16"/>
-        <!--<keyboard-shortcuts></keyboard-shortcuts>-->
-        <!--<footer-component :user="user"></footer-component>-->
+        <footer-section :user="user"></footer-section>
+        <keyboard-shortcuts></keyboard-shortcuts>
     </div>
 </template>
 
 <script>
     import TopNav from '~/components/TopNav.vue'
     import axios from 'axios'
+    import showdown from 'showdown'
+    import FooterSection from '~/components/FooterSection.vue'
+    import KeyboardShortcuts from '~/components/KeyboardShortcuts';
 
     export default {
         components: {
-            TopNav
+            TopNav, FooterSection, KeyboardShortcuts
         },
         data() {
             return {
@@ -166,9 +169,8 @@
                 );
             },
             markdown: function (content) {
-                return content;
-                // let converter = new showdown.Converter();
-                // return converter.makeHtml(content);
+                let converter = new showdown.Converter();
+                return converter.makeHtml(content);
             },
             hotkeys(e) {
                 if (document.activeElement.tagName === 'BODY') {
