@@ -16,6 +16,7 @@
             }
         },
         async mounted() {
+            console.log('api url: ' + process.env.API_URL);
             let url = process.env.API_URL + 'me?api_token=' + this.$route.query.api_token;
             this.$axios.get(url).then((response) => {
                 this.user = response.data;
