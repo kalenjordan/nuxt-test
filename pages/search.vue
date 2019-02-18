@@ -67,7 +67,7 @@
                 this.query = this.$route.query.q;
                 this.search();
             } else {
-                this.$axios.get(this.api('users')).then((response) => {
+                this.$axios.get(this.$api('users')).then((response) => {
                     this.users = response.data;
                 });
             }
@@ -79,7 +79,7 @@
                 this.search_processing = true;
                 window.history.replaceState({}, null, '/search?q=' + this.query);
 
-                this.$axios.get(this.api('users?q=' + this.query)).then((response) => {
+                this.$axios.get(this.$api('users?q=' + this.query)).then((response) => {
                     this.search_processing = false;
                     this.users = response.data;
                 });
@@ -90,7 +90,7 @@
                     return;
                 }
 
-                this.$axios.post(this.api('/api/v1/saved-searches'), {
+                this.$axios.post(this.$api('/api/v1/saved-searches'), {
                     'name': name,
                     'query': this.$refs.search.value,
                 }).then((response) => {
@@ -117,7 +117,7 @@
                     return alert('Please login first');
                 }
 
-                this.$axios.get(this.api('twitter/add-user/' + this.$refs.twitterUsername.value)).then((response) => {
+                this.$axios.get(this.$api('twitter/add-user/' + this.$refs.twitterUsername.value)).then((response) => {
                     if (response.data.username) {
                         this.$router.push({
                             path: '/' + response.data.username,
@@ -126,12 +126,6 @@
                         alert(response.data.message);
                     }
                 });
-            },
-            api(path) {
-                let url = process.env.API_URL + path;
-                url = url + (url.indexOf('?') ? '&' : '?') + 'api_token=' + this.loggedInUser.api_token;
-
-                return url;
             },
         },
         computed: {

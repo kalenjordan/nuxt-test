@@ -106,7 +106,7 @@
         mounted() {
             window.addEventListener('keyup', this.hotkeys);
 
-            this.$axios.get(this.api('saved-searches?featured_min=10&featured_max=99')).then((response) => {
+            this.$axios.get(this.$api('saved-searches?featured_min=10&featured_max=99')).then((response) => {
                 this.savedSearches = response.data;
             });
         },
@@ -121,26 +121,20 @@
             mergeUser() {
                 let username = prompt('Enter username');
 
-                this.$axios.get(this.api('users/' + this.user.username + '/merge/' + username)).then((response) => {
+                this.$axios.get(this.$api('users/' + this.user.username + '/merge/' + username)).then((response) => {
                     alert(response.message);
                 });
             },
             addUser() {
                 let name = prompt('Name?');
 
-                this.$axios.post(this.api('users'), {
+                this.$axios.post(this.$api('users'), {
                     'name': name,
                 }).then((response) => {
                     this.$router.push({
                         path: '/' + response.data.username,
                     });
                 });
-            },
-            api(path) {
-                let url = process.env.API_URL + path;
-                url = url + (url.indexOf('?') ? '&' : '?') + 'api_token=' + this.loggedInUser.api_token;
-
-                return url;
             },
             showKeyboardShortcuts() {
                 this.$modal.show('help');

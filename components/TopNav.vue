@@ -2,7 +2,7 @@
     <div>
         <div class="nav flex items-center">
             <div class="logo">
-                <router-link :to="{name: 'home'}" class="naked-link" href="/">
+                <router-link :to="{path: '/'}" class="naked-link" href="/">
                     <img class="logo w-3rem" src="/images/icon.png">
                 </router-link>
             </div>

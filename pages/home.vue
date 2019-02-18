@@ -96,10 +96,10 @@
                 })
         },
         mounted() {
-            this.$axios.get(this.api('saved-searches/home?with_users=1')).then((response) => {
+            this.$axios.get(this.$api('saved-searches/home?with_users=1')).then((response) => {
                 this.homeSavedSearch = response.data;
             });
-            this.$axios.get(this.api('saved-searches/home/related?with_users=1')).then((response) => {
+            this.$axios.get(this.$api('saved-searches/home/related?with_users=1')).then((response) => {
                 this.savedSearches = response.data;
             });
 
@@ -123,12 +123,6 @@
                     .pauseFor(700)
                     .deleteChars(15)
                     .start();
-            },
-            api(path) {
-                let url = process.env.API_URL + path;
-                url = url + (url.indexOf('?') ? '&' : '?') + 'api_token=' + this.loggedInUser.api_token;
-
-                return url;
             },
         },
         computed: {
