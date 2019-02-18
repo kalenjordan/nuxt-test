@@ -73,8 +73,6 @@
             }
         },
         mounted() {
-            console.log('process.env from topnav');
-            console.log(process.env);
             window.addEventListener('keyup', this.hotkeys);
 
             if (this.$cookies.get('user')) {
