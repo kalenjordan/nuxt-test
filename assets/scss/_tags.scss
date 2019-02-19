@@ -13,8 +13,10 @@
     color: $grayLight;
 
     i.tag-icon {
-        font-size: 80%;
-        margin-right: 3px;
+        font-size: 1rem;
+        float: left;
+        margin-right: 7px;
+        color: $grayLight;
 
         &.fa-location-arrow {
             opacity: 0.7;

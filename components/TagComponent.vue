@@ -10,7 +10,7 @@
         <template v-else>
             <div class="tag tag-with-upvote border-1 fast text-sm sm:text-base">
                 <router-link class="tag-name animated" :to="{ path: '/tag/' + tag.slug }">
-                    <template v-if="tag.icon"><i class="material-icons">{{ tag.icon }}</i></template>
+                    <template v-if="tag.icon"><i class="tag-icon material-icons">{{ tag.icon }}</i></template>
                     {{ tag.name }}
                 </router-link>
                 <span class="separator">&nbsp;</span>
