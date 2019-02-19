@@ -20,19 +20,19 @@ remoteDocumentRoot = '/home/forge/pros.global'
 print(green("1. Starting deploy"))
 
 def deploy():
-	with cd(remoteDocumentRoot):
+    with cd(remoteDocumentRoot):
 		print(green("2. Checking out latest from Git"))
 		run('git fetch')
 		run('git checkout origin/master --quiet')
 
-	with cd(remoteDocumentRoot):
+    with cd(remoteDocumentRoot):
 		print(green("3. Running npm install"))
 		run('npm install')
 
     with cd(remoteDocumentRoot):
-        print(green("3. Running nuxt build"))
+        print(green("4. Running nuxt build"))
         run('npm run build')
 
     with cd(remoteDocumentRoot):
-        print(green("4. Running nuxt restart"))
-        run("pm2 restart 'npm run start')
+        print(green("5. Running nuxt restart"))
+        run("pm2 restart 'npm run start'")

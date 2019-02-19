@@ -99,11 +99,14 @@
             return {
                 title: process.env.APP_NAME + " - Connect with awesome pros",
                 meta: [
-                    {
-                        hid: 'description',
-                        name: 'description',
-                        content: "Connect with awesome founders, developers, and eCommerce professionals",
-                    },
+                    {hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'pros.global'},
+                    {hid: 'description', name: 'description', content: this.description},
+                    {hid: "title", name: 'title', property : 'og:title', content: 'pros.global'},
+                    {hid: 'image', name: 'image', property: 'og:image', content: this.cardImage },
+                    {hid: "url", name: 'url', property: 'og:url', content: process.env.APP_URL },
+
+                    {hid: "og:title", name: 'og:title', content: 'pros.global'},
+                    {hid: "og:description", name: 'og:description', content: this.description},
                 ]
             }
         },
@@ -138,6 +141,13 @@
             },
         },
         computed: {
+            description() {
+                return 'Connect with awesome founders, developers, and eCommerce professionals';
+            },
+            cardImage() {
+                return 'https://image.thum.io/get/viewportWidth/900/viewportHeight/450/width/900/noanimate/' +
+                    '?url=' + encodeURIComponent(process.env.CARD_BASE_URL + 'home-twitter-card?v1');
+            },
             loggedInUser: function () {
                 return this.$store.state.user;
             },
