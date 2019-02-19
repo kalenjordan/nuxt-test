@@ -107,6 +107,7 @@
 
                     {hid: "og:title", name: 'og:title', content: 'pros.global'},
                     {hid: "og:description", name: 'og:description', content: this.description},
+                    {hid: "og:image", name: 'og:image', content: this.cardImage},
                 ]
             }
         },
