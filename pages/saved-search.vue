@@ -146,7 +146,9 @@
                     {hid: "title", name: 'title', property : 'og:title', content: this.savedSearch.name},
                     {hid: 'image', name: 'image', property: 'og:image', content: this.cardImage },
                     {hid: "url", name: 'url', property: 'og:url', content: process.env.APP_URL + 's/' + this.savedSearch.slug },
-                    {hid: "description", name: 'description', property: 'og:description', content: this.savedSearch.description},
+
+                    {hid: "og:title", name: 'og:title', content: this.savedSearch.name},
+                    {hid: "og:description", name: 'og:description', content: this.savedSearch.description},
                 ]
             }
         },
