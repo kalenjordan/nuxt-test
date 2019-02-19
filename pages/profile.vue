@@ -63,10 +63,14 @@
                             <div v-if="upvote.message" class="mb-2" v-html="markdown(upvote.message)"></div>
                             <div v-else class="mb-2">{{ upvote.author_firstname }} upvoted</div>
                             <div class="inline-tag">{{ upvote.tag_name }}</div>
+                            <router-link v-if="loggedInUser.id === upvote.author_id"
+                                         :to="{ path: '/upvotes/' + upvote.id + '?editing=1' }">
+                                <i class="edit-upvote material-icons align-middle">edit</i>
+                            </router-link>
                             <div class="inline text-gray-light">
                                 <router-link class="naked-link text-xs ml-1"
-                                :to="{ path: 'upvotes/' + upvote.id }">
-                                {{ upvote.created_at | moment("subtract", "6 hours") | moment('from') }}
+                                             :to="{ path: 'upvotes/' + upvote.id }">
+                                    {{ upvote.created_at | moment("subtract", "6 hours") | moment('from') }}
                                 </router-link>
                             </div>
                         </div>
@@ -110,8 +114,8 @@
         async asyncData({params}) {
             if (process.server) {
                 let url = process.env.API_URL + 'users/' + params.username;
-                let { data } = await axios.get(url);
-                return { user: data };
+                let {data} = await axios.get(url);
+                return {user: data};
             }
         },
         head() {
@@ -180,6 +184,10 @@
                 return converter.makeHtml(content);
             },
             hotkeys(e) {
+                if (e.key === 'Escape') {
+                    this.editing = false;
+                }
+
                 if (document.activeElement.tagName === 'BODY') {
                     if (e.key === 'i') {
                         window.location = '/admin/impersonate/' + this.user.username;

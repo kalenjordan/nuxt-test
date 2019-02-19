@@ -35,16 +35,6 @@
         }
     }
 
-    .editable textarea {
-        height: 4em;
-        background: none;
-    }
-
-    .editable-about textarea {
-        height: 21em;
-        border: none;
-    }
-
     p {
         margin-bottom: 0.75rem;
         &:last-child {
@@ -63,6 +53,17 @@
             margin-bottom: 0.5rem;
             margin-top: 0.75rem;
             font-size: inherit;
+        }
+
+        i.edit-upvote {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: $grayLighter;
+            &:hover {
+                color: $highlightColor;
+            }
+            font-size: 1rem;
         }
     }
 }

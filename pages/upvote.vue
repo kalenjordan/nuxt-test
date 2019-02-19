@@ -64,9 +64,16 @@
 </template>
 
 <script>
+    import TopNav from '~/components/TopNav.vue'
+    import FooterComponent from '~/components/FooterComponent.vue'
+    import KeyboardShortcuts from '~/components/KeyboardShortcuts'
+
     import showdown from 'showdown';
 
     export default {
+        components: {
+            TopNav, FooterComponent, KeyboardShortcuts
+        },
         data() {
             return {
                 upvote: {},
@@ -75,6 +82,15 @@
             }
         },
         mounted() {
+            window.addEventListener('keyup', this.hotkeys);
+
+            if (this.$route.query.editing) {
+                this.editing = true;
+                this.$nextTick(() => {
+                    this.$refs.message.focus();
+                });
+            }
+
             this.$axios.get(this.$api('upvotes/' + this.$route.params.id)).then((response) => {
                 this.upvote = response.data;
                 this.message = this.linkedinShareContent();
@@ -86,6 +102,11 @@
             }
         },
         methods: {
+            hotkeys(e) {
+                if (e.key === 'Escape') {
+                    this.editing = false;
+                }
+            },
             markdown: function (content) {
                 let converter = new showdown.Converter();
                 return converter.makeHtml(content);
