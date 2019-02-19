@@ -21,12 +21,16 @@
                     <img v-bind:src="user.avatar_path" class="w-16 sm:w-32 h-16 sm:h-32 rounded-full">
                     <!--<i v-if="this.isPresent(user)" class="absolute is-present fas fa-circle"></i>-->
                 </div>
-                <input ref="avatar_path" v-if="editing" v-model="user.avatar_path" class="p-2 mb-2 block mx-auto w-128"
+                <input ref="avatar_path" v-if="editing" v-model="user.avatar_path"
+                       class="p-2 mb-2 block mx-auto w-128 text bg-transparent-input"
                        placeholder="e.g. path to avatar">
-                <input ref="name" v-if="editing" v-model="user.name" class="p-2 mb-2  block mx-auto w-128"
+                <input ref="name" v-if="editing" v-model="user.name"
+                       class="p-2 mb-2  block mx-auto w-128 bg-transparent-input text"
                        placeholder="e.g. Jane Smith">
-                <h1 ref="headline" class="text-xl sm:text-4xl editable animated"
-                    v-bind:contenteditable="canEdit" @focus="editing=true">
+                <input ref="headline" v-if="editing" v-model="user.headline"
+                       class="p-2 mb-2  block mx-auto w-128 bg-transparent-input text"
+                       placeholder="e.g. I am a person that does certain things!">
+                <h1 v-if="!editing" class="text-xl sm:text-4xl animated">
                     {{ user.headline }}
                 </h1>
             </div>
@@ -147,7 +151,9 @@
                 if (this.canEdit) {
                     this.editing = true;
                     this.$nextTick(() => {
-                        this.$refs.headline.focus();
+                        if (this.$refs.headline) {
+                            this.$refs.headline.focus();
+                        }
                     });
                 }
             },

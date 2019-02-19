@@ -3,7 +3,9 @@
         <div class="section footer--inner flex flex-wrap">
             <div class="footer--column flex-2 m-4" style="flex-basis: 15rem;">
                 <div class="mb-2">
-                    <img class="logo" src="/images/logo.png">
+                    <router-link :to="{ path: '/' }">
+                        <img class="logo" src="/images/logo.png">
+                    </router-link>
                 </div>
                 <p class="mb-2">
                     pros.global is a matchmaking platform for founders, eCommerce professionals,
