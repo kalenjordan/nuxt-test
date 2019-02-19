@@ -141,7 +141,7 @@
                     {hid: 'twitter:creator', name: 'twitter:creator', content: '@kalenjordan'},
                     {hid: 'twitter:title', name: 'twitter:title', content: this.savedSearch.name},
                     {hid: 'twitter:image', name: 'twitter:image', content: this.cardImage},
-                    {hid: 'twitter:description', name: 'twitter:image', content: this.savedSearch.description},
+                    {hid: 'twitter:description', name: 'twitter:description', content: this.savedSearch.description},
 
                     {hid: "title", name: 'title', property : 'og:title', content: this.savedSearch.name},
                     {hid: 'image', name: 'image', property: 'og:image', content: this.cardImage },
