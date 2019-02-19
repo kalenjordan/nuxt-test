@@ -25,3 +25,6 @@ def deploy():
 		run('git fetch')
 		run('git checkout origin/master --quiet')
 
+	with cd(remoteDocumentRoot):
+		print(green("2. Running npm install"))
+		run('npm install')

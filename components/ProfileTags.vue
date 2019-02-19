@@ -3,7 +3,7 @@
         <tag-component v-for="tag in user.tags" :user="user" :tag="tag" :key="tag.id" :editing="editing"></tag-component>
         <div class="tag add-tag" @click="addTag()">
             <span class="tag-name">
-                <i class="tag-icon fas fa-plus"></i> Add tag
+                <i class="material-icons">add</i> Add tag
             </span>
         </div>
 

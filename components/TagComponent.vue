@@ -17,7 +17,7 @@
 
 <script>
     export default {
-        props: ['user', 'tag'],
+        props: ['user', 'tag', 'editing'],
         data() {
             return {
                 hasBeenClicked: false,
@@ -38,14 +38,15 @@
                 tag.is_upvoted_by_me = ! tag.is_upvoted_by_me;
                 let username = this.user.username;
 
-                this.$axios.get(this.$api('users/' + username + '/upvote-tag/' + tag.id)).then(function(response) {
+                this.$axios.get(this.$api('users/' + username + '/upvote-tag/' + tag.id)).then((response) => {
                     let upvote = response.data.upvote;
                     let allUpvotes = response.data.all_upvotes;
 
                     if (upvote.is_deleted) {
-                        window.Events.$emit('upvote-removed', upvote, allUpvotes);
+                        this.$root.$emit('upvote-removed', upvote, allUpvotes);
                     } else {
-                        window.Events.$emit('upvote-added', upvote, allUpvotes);
+                        console.log('emit added');
+                        this.$root.$emit('upvote-added', upvote, allUpvotes);
                     }
                 });
             }

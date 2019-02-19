@@ -11,7 +11,7 @@
             </div>
             <div v-if="canEdit && !editing">
                 <div class="mr-6" @click="editing=1">
-                    <i class="material-icons font-120 cursor-pointer">edit</i>
+                    <i class="material-icons font-120 cursor-pointer animated">edit</i>
                 </div>
             </div>
         </top-nav>
@@ -46,7 +46,6 @@
                 </div>
             </div>
         </div>
-        <hr v-if="hasUpvotes" class="m-6 sm:my-16 sm:w-md sm:mx-auto"/>
         <section v-if="hasUpvotes" class="endorsements mx-auto p-4 max-w-sm text-sm leading-tight">
             <div class="card hoverable endorsement-card mb-4" v-for="upvote in user.upvotes" :key="upvote.id">
                 <div class="card--inner p-4 flex">
@@ -135,12 +134,13 @@
                 this.user = response.data;
             });
 
-            // window.Events.$on('upvote-added', (upvote, allUpvotes) => {
-            //     this.user.upvotes = allUpvotes;
-            // });
-            // window.Events.$on('upvote-removed', (upvote, allUpvotes) => {
-            //     this.user.upvotes = allUpvotes;
-            // });
+            this.$root.$on('upvote-added', (upvote, allUpvotes) => {
+                console.log('added');
+                this.user.upvotes = allUpvotes;
+            });
+            this.$root.$on('upvote-removed', (upvote, allUpvotes) => {
+                this.user.upvotes = allUpvotes;
+            });
         },
         methods: {
             editIfOwner() {

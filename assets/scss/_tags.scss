@@ -58,6 +58,14 @@
     &:hover {
         color: $highlightColor;
     }
+
+    i {
+        font-size: 18px;
+        float: left;
+        display: block;
+        margin-right: 5px;
+        margin-left: -5px;
+    }
 }
 
 .tag.tag-with-upvote {

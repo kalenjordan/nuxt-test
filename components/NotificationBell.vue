@@ -1,6 +1,6 @@
 <template>
     <div class="notification-wrapper">
-        <i class="material-icons font-120 cursor-pointer" @click="toggleNotifications()">
+        <i class="material-icons font-120 cursor-pointer animated" @click="toggleNotifications()">
             notifications
         </i>
         <span v-if="this.unreadNotificationCount" class="alert-bubble absolute bg-primary rounded-full cursor-pointer"
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-    import { mapMutations } from 'vuex'
+    import {mapMutations} from 'vuex'
 
     export default {
         props: ['hideSearch', 'user'],
