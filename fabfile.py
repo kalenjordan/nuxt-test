@@ -28,3 +28,11 @@ def deploy():
 	with cd(remoteDocumentRoot):
 		print(green("3. Running npm install"))
 		run('npm install')
+
+    with cd(remoteDocumentRoot):
+        print(green("3. Running nuxt build"))
+        run('npm run build')
+
+    with cd(remoteDocumentRoot):
+        print(green("4. Running nuxt restart"))
+        run("pm2 restart 'npm run start')

@@ -14,7 +14,7 @@
                 </router-link>
             </div>
             <div class="card--identity mb-2">
-                <div class="card--identity--name bold">
+                <div class="card--identity--name">
                     <router-link :to="{ path: '/' + user.username }" class="naked-link">
                         {{ user.name }}
                     </router-link>
