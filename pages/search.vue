@@ -39,20 +39,20 @@
             </div>
         </section>
         <hr class="mt-16 mb-16"/>
-        <footer-section></footer-section>
+        <footer-component></footer-component>
         <keyboard-shortcuts></keyboard-shortcuts>
     </div>
 </template>
 
 <script>
-    import FooterSection from "../components/FooterSection";
+    import FooterComponent from "../components/FooterComponent";
     import TopNav from '../components/TopNav';
     import SearchResultCard from '../components/SearchResultCard';
     import KeyboardShortcuts from '../components/KeyboardShortcuts';
 
     export default {
         components: {
-            FooterSection, TopNav, SearchResultCard, KeyboardShortcuts,
+            FooterComponent, TopNav, SearchResultCard, KeyboardShortcuts,
         },
         data() {
             return {

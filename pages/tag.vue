@@ -69,12 +69,12 @@
 <script>
     import TopNav from '~/components/TopNav.vue'
     import UserCard from '~/components/UserCard.vue'
-    import FooterSection from '~/components/FooterSection.vue'
+    import FooterComponent from '~/components/FooterComponent.vue'
     import KeyboardShortcuts from '~/components/KeyboardShortcuts';
 
     export default {
         components: {
-            TopNav, UserCard, FooterSection, KeyboardShortcuts
+            TopNav, UserCard, FooterComponent, KeyboardShortcuts
         },
         data() {
             return {

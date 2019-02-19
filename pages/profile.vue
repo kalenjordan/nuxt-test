@@ -33,7 +33,7 @@
         </section>
         <section class="mx-auto max-w-md text-center">
             <div class="m-4">
-                <!--<user-profile-tags :user="user" :editing="editing"></user-profile-tags>-->
+                <profile-tags :user="user" :editing="editing"></profile-tags>
             </div>
         </section>
         <div class="section mx-auto max-w-md text-md" v-if="user.about || editing">
@@ -77,24 +77,25 @@
             </a>
         </section>
 
-
         <!--<chat-wrapper :user="user"></chat-wrapper>-->
         <hr class="mt-16 mb-16"/>
-        <footer-section :user="user"></footer-section>
+        <footer-component :user="user"></footer-component>
         <keyboard-shortcuts></keyboard-shortcuts>
     </div>
 </template>
 
 <script>
     import TopNav from '~/components/TopNav.vue'
+    import FooterComponent from '~/components/FooterComponent.vue'
+    import KeyboardShortcuts from '~/components/KeyboardShortcuts'
+    import ProfileTags from '~/components/ProfileTags'
+
     import axios from 'axios'
     import showdown from 'showdown'
-    import FooterSection from '~/components/FooterSection.vue'
-    import KeyboardShortcuts from '~/components/KeyboardShortcuts';
 
     export default {
         components: {
-            TopNav, FooterSection, KeyboardShortcuts
+            TopNav, FooterComponent, KeyboardShortcuts, ProfileTags
         },
         data() {
             return {
@@ -202,9 +203,6 @@
             loggedInUser: function () {
                 return this.$store.state.user;
             },
-            // presentUsers() {
-            //     return this.$store.state.presentUsers;
-            // },
             canEdit() {
                 if (!this.loggedIn) {
                     return false;

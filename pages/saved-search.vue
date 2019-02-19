@@ -97,19 +97,19 @@
         </section>
         <hr class="mt-16 mb-16"/>
         <keyboard-shortcuts></keyboard-shortcuts>
-        <footer-section></footer-section>
+        <footer-component></footer-component>
     </div>
 </template>
 <script>
     import TopNav from '~/components/TopNav.vue'
     import UserCard from '~/components/UserCard.vue'
     import SavedSearchCard from '~/components/SavedSearchCard.vue'
-    import FooterSection from '~/components/FooterSection.vue'
+    import FooterComponent from '~/components/FooterComponent.vue'
     import KeyboardShortcuts from '~/components/KeyboardShortcuts';
 
     export default {
         components: {
-            TopNav, UserCard, SavedSearchCard, FooterSection, KeyboardShortcuts
+            TopNav, UserCard, SavedSearchCard, FooterComponent, KeyboardShortcuts
         },
         data() {
             return {
