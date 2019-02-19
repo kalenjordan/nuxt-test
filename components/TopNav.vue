@@ -7,7 +7,7 @@
                 </router-link>
             </div>
             <div class="ml-auto mr-6" v-if="!isSearching" @click="focusSearch()">
-                <i class="material-icons text-gray-dark font-120 cursor-pointer animated">
+                <i class="search material-icons text-gray-dark font-120 cursor-pointer animated">
                     search
                 </i>
             </div>

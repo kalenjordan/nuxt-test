@@ -110,6 +110,8 @@
     import FooterComponent from '~/components/FooterComponent.vue'
     import KeyboardShortcuts from '~/components/KeyboardShortcuts';
 
+    import axios from 'axios';
+
     export default {
         components: {
             TopNav, UserCard, SavedSearchCard, FooterComponent, KeyboardShortcuts
@@ -121,6 +123,13 @@
                 editing: false,
             }
         },
+        async asyncData({params}) {
+            if (process.server) {
+                let url = process.env.API_URL + 'saved-searches/' + params.slug;
+                let {data} = await axios.get(url);
+                return {savedSearch: data};
+            }
+        },
         head() {
             return {
                 title: this.savedSearch.name + " | pros.global",
@@ -129,7 +138,12 @@
                         hid: 'description',
                         name: 'description',
                         content: this.savedSearch.description,
-                    }
+                    },
+                    {hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image'},
+                    {hid: 'twitter:site', name: 'twitter:site', content: '@kalenjordan'},
+                    {hid: 'twitter:creator', name: 'twitter:creator', content: '@kalenjordan'},
+                    {hid: 'twitter:title', name: 'twitter:title', content: this.savedSearch.name},
+                    {hid: 'twitter:image', name: 'twitter:image', content: this.cardImage},
                 ]
             }
         },
@@ -216,8 +230,9 @@
             },
         },
         computed: {
-            auth() {
-                return 'api_token=' + this.loggedInUser.api_token;
+            cardImage() {
+                return 'https://image.thum.io/get/viewportWidth/900/viewportHeight/450/width/900/noanimate/' +
+                    '?url=' + process.env.CARD_BASE_URL + 's/' + this.savedSearch.slug + '/twitter-card?v3';
             },
             loggedIn() {
                 return this.$store.state.user && this.$store.state.user.id;
