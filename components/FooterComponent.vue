@@ -35,7 +35,7 @@
                 <ul class="list-reset">
                     <template v-for="savedSearch in savedSearches">
                         <li class="pb-2" v-if="savedSearch.icon !== 'location_on'" :key="savedSearch.id">
-                            <router-link class="naked-link" :to="{ name: 'saved-search', params: {slug: savedSearch.slug}}">
+                            <router-link class="naked-link" :to="{ path: '/s/' + savedSearch.slug }">
                                 {{ savedSearch.name }}
                             </router-link>
                         </li>
@@ -48,7 +48,7 @@
                 <ul class="list-reset">
                     <template v-for="savedSearch in savedSearches">
                         <li class="pb-2" v-if="savedSearch.icon === 'location_on'" :key="savedSearch.id">
-                            <router-link class="naked-link" :to="{ name: 'saved-search', params: {slug: savedSearch.slug}}">
+                            <router-link class="naked-link" :to="{ path: '/s/' + savedSearch.slug }">
                                 {{ savedSearch.name }}
                             </router-link>
                         </li>
