@@ -149,7 +149,7 @@
                     {name: 'og:title', content: this.savedSearch.name},
                     {name: 'og:image', content: this.cardImage},
                     {name: 'og:url', content: process.env.APP_URL + 's/' + this.savedSearch.slug },
-                    {name: 'twitter:image', content: this.savedSearch.description},
+                    {name: 'og:description', content: this.savedSearch.description},
                 ]
             }
         },
