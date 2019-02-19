@@ -57,13 +57,19 @@ module.exports = {
     ** Nuxt.js modules
     */
     modules: [
-        'nuxt-material-design-icons',
+        '@nuxtjs/vuetify',
         '@nuxtjs/dotenv',
         '@nuxtjs/toast',
-        'cookie-universal-nuxt',
         '@nuxtjs/axios',
-        '@nuxtjs/pwa'
+        '@nuxtjs/pwa',
+        'nuxt-material-design-icons',
+        'cookie-universal-nuxt',
     ],
+
+    vuetify: {
+        materialIcons: false,
+        css: false,
+    },
 
     /*
     ** Axios module configuration

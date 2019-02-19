@@ -40,10 +40,18 @@ input.text, textarea.text {
         }
     }
 
+    .v-select__slot {
+        margin: 1rem;
+    }
+
     .v-select-list {
         margin-top: 0.5em;
         .v-list__tile__content {
-            padding: 0.25em;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            &:hover {
+                background-color: $grayLightest;
+            }
         }
 
         .v-list__tile--highlighted .v-list__tile__content {

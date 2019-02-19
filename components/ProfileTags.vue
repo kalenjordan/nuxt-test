@@ -7,33 +7,34 @@
             </span>
         </div>
 
-        <!--<div class="tag-autocomplete card absolute" v-if="isAddingTag">-->
-            <!--<div class="card&#45;&#45;inner p-4">-->
-                <!--<v-combobox-->
-                        <!--v-model="model"-->
-                        <!--:items="tagNames"-->
-                        <!--:search-input.sync="tagSearch"-->
-                        <!--hide-selected-->
-                        <!--autofocus-->
-                        <!--solo-->
-                        <!--persistent-hint-->
-                        <!--small-chips-->
-                        <!--return-object-->
-                        <!--@input="tagInput()"-->
-                        <!--@blur="isAddingTag=0"-->
-                <!--&gt;-->
-                    <!--<template slot="no-data">-->
-                        <!--<v-list-tile>-->
-                            <!--<v-list-tile-content>-->
-                                <!--<v-list-tile-title>-->
-                                    <!--No results matching "<strong>{{ tagSearch }}</strong>". Press <kbd>enter</kbd> to create a new one-->
-                                <!--</v-list-tile-title>-->
-                            <!--</v-list-tile-content>-->
-                        <!--</v-list-tile>-->
-                    <!--</template>-->
-                <!--</v-combobox>-->
-            <!--</div>-->
-        <!--</div>-->
+        <div class="tag-autocomplete card absolute" v-if="isAddingTag">
+            <div class="card--inner">
+                <v-combobox
+                        v-model="model"
+                        :items="tagNames"
+                        :search-input.sync="tagSearch"
+                        hide-selected
+                        autofocus
+                        solo
+                        persistent-hint
+                        small-chips
+                        return-object
+                        @input="tagInput()"
+                        @blur="isAddingTag=0"
+                >
+                    <template slot="no-data">
+                        <v-list-tile>
+                            <v-list-tile-content>
+                                <v-list-tile-title>
+                                    No results matching "<strong>{{ tagSearch }}</strong>". Press
+                                    <kbd>enter</kbd> to create a new one
+                                </v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+                    </template>
+                </v-combobox>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -61,7 +62,7 @@
         },
         methods: {
             addTag() {
-                if (! this.loggedIn) {
+                if (!this.loggedIn) {
                     return alert("Please login first before you can add tags");
                 }
                 this.isAddingTag = true;
@@ -77,7 +78,7 @@
                     }
                 }
             },
-            tagInput: function(data) {
+            tagInput: function (data) {
                 this.$axios.post(this.$api("users/" + this.user.username + "/add-tag"), {
                     'tag': this.model
                 }).then((response) => {
@@ -90,13 +91,13 @@
             },
         },
         computed: {
-            tagNames: function() {
-                return this.tags.map( tag => tag.name);
+            tagNames: function () {
+                return this.tags.map(tag => tag.name);
             },
-            loggedIn: function() {
+            loggedIn: function () {
                 return this.$store.state.user.id;
             },
-            loggedInUser: function() {
+            loggedInUser: function () {
                 return this.$store.state.user;
             }
         }
