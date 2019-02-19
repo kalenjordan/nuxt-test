@@ -21,10 +21,10 @@ print(green("1. Starting deploy"))
 
 def deploy():
 	with cd(remoteDocumentRoot):
-		print(green("1. Checking out latest from Git"))
+		print(green("2. Checking out latest from Git"))
 		run('git fetch')
 		run('git checkout origin/master --quiet')
 
 	with cd(remoteDocumentRoot):
-		print(green("2. Running npm install"))
+		print(green("3. Running npm install"))
 		run('npm install')
