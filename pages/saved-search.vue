@@ -146,9 +146,9 @@
                     {hid: 'twitter:image', name: 'twitter:image', content: this.cardImage},
                     {hid: 'twitter:description', name: 'twitter:image', content: this.savedSearch.description},
 
-                    {name: 'og:title', content: this.savedSearch.name},
-                    {name: 'og:image', content: this.cardImage},
-                    {name: 'og:url', content: process.env.APP_URL + 's/' + this.savedSearch.slug },
+                    {hid: "og:title", name: 'og:title', content: this.savedSearch.name},
+                    {hid: "og:image", name: 'og:image', content: this.cardImage},
+                    {hid: "og:url", name: 'og:url', content: process.env.APP_URL + 's/' + this.savedSearch.slug },
                     {hid: "og:description", name: 'og:description', content: this.savedSearch.description},
                 ]
             }
