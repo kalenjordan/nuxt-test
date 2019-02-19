@@ -27,7 +27,7 @@
             <div class="saved-searches m-2 mb-4 sm:mb-8 flex flex-wrap justify-center">
                 <saved-search-card class="mb-12 m-4" v-for="savedSearch in savedSearches" :key="savedSearches.id"
                                    :savedSearch="savedSearch"
-                                   ></saved-search-card>
+                ></saved-search-card>
             </div>
         </section>
 
@@ -83,7 +83,7 @@
             }
         },
         async asyncData() {
-            if (! process.server) {
+            if (!process.server) {
                 return {homeSavedSearch: {users: []}};
             }
 
@@ -101,13 +101,14 @@
                 meta: [
                     {hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'pros.global'},
                     {hid: 'description', name: 'description', content: this.description},
-                    {hid: "title", name: 'title', property : 'og:title', content: 'pros.global'},
-                    {hid: 'image', name: 'image', property: 'og:image', content: this.cardImage },
-                    {hid: "url", name: 'url', property: 'og:url', content: process.env.APP_URL },
+                    {hid: "title", name: 'title', property: 'og:title', content: 'pros.global'},
+                    {hid: 'image', name: 'image', property: 'og:image', content: this.cardImage},
+                    {hid: "url", name: 'url', property: 'og:url', content: process.env.APP_URL},
 
                     {hid: "og:title", name: 'og:title', content: 'pros.global'},
                     {hid: "og:description", name: 'og:description', content: this.description},
                     {hid: "og:image", name: 'og:image', content: this.cardImage},
+                    {hid: 'twitter:image', name: 'twitter:image', content: this.cardImage},
                 ]
             }
         },
