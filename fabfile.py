@@ -15,7 +15,7 @@ def printUsageAndExit():
 	print 'Example: fab deploy'
 	sys.exit(0)
 
-remoteDocumentRoot = '/home/forge/nuxt'
+remoteDocumentRoot = '/home/forge/pros.global'
 
 print(green("1. Starting deploy"))
 
