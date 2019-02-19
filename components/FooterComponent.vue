@@ -66,10 +66,14 @@
                     <a class="btn px-3 py-1 ml-1"><i class="material-icons align-middle">mail_outline</i></a>
                 </div>
                 <div class="text-2xl gray-lighter mb-4">
-                    <a class="naked-link mr-2" href="https://twitter.com/kalenjordan"><i class="fab fa-twitter"></i></a>
-                    <a class="naked-link mr-2" href="https://github.com/kalenjordan/pros.global"><i class="fab fa-github"></i></a>
+                    <a class="naked-link mr-2" href="https://twitter.com/kalenjordan">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="naked-link mr-2" href="https://github.com/kalenjordan/pros.global">
+                        <i class="fab fa-github"></i>
+                    </a>
                     <a class="naked-link mr-2" href="https://www.linkedin.com/company/35561588/">
-                        <i class="material-icons">facebook-box</i>
+                        <i class="fab fa-facebook"></i>
                     </a>
                 </div>
                 <div class="mb-4">

@@ -20,8 +20,9 @@ module.exports = {
             {hid: 'description', name: 'description', content: pkg.description}
         ],
         link: [
-            {rel: 'icon', type: 'image/x-icon', href: process.env.FAVICON}
-        ]
+            {rel: 'icon', type: 'image/x-icon', href: process.env.FAVICON},
+            {rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.7.2/css/all.css'},
+        ],
     },
 
     vue: {
