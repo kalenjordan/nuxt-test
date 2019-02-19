@@ -167,8 +167,7 @@
             save() {
                 this.editing = false;
                 this.user.about = this.$refs.about.value;
-                this.user.headline = this.$refs.headline.innerText;
-                // Don't need to set avatar_path or name because of v-model
+                // Don't need to set avatar_path, headline or name because of v-model
 
                 this.$toast.show('Saved profile!', {duration: 5000, position: "bottom-right"});
 
