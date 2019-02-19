@@ -13,7 +13,7 @@
                     being built by
                     <router-link :to="{ path: '/kalenjordan' }">Kalen</router-link>
                     with &hearts; in
-                    <router-link :to="{ name: 'saved-search', params: {slug: 'austin'}}">Austin</router-link>
+                    <router-link :to="{ path: '/s/austin' }">Austin</router-link>
                     .
                 </p>
                 <p class="mb-2">

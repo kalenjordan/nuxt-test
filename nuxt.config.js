@@ -33,9 +33,7 @@ module.exports = {
     /*
     ** Customize the progress-bar color
     */
-    loading: {
-        color: '#fbc000'
-    },
+    loading: false,
 
     /*
     ** Global CSS
@@ -67,6 +65,11 @@ module.exports = {
         'nuxt-material-design-icons',
         'cookie-universal-nuxt',
     ],
+
+    toast: {
+        position: 'bottom-right',
+        duration: 5000,
+    },
 
     vuetify: {
         materialIcons: false,

@@ -13,6 +13,9 @@
             filter: grayscale(100);
             width: 16rem;
             opacity: 0.3;
+            &:hover {
+                opacity: 0.5;
+            }
         }
 
         .email-signup {

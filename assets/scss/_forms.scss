@@ -4,7 +4,7 @@ input.text, textarea.text {
     transition: all 0.25s ease;
 
     &::placeholder {
-        color: $grayLighter;
+        color: $grayLight;
     }
 
     &.bg-transparent-input {
