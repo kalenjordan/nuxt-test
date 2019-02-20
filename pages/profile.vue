@@ -198,7 +198,7 @@
         computed: {
             cardImage() {
                 return 'https://image.thum.io/get/viewportWidth/900/viewportHeight/450/width/900/noanimate/' +
-                    '?url=' + encodeURIComponent(process.env.CARD_BASE_URL + '/' + this.user.username + '/twitter-card?v4');
+                    '?url=' + encodeURIComponent(process.env.CARD_BASE_URL + '/' + this.user.username + '/twitter-card?v5');
             },
 
             hasUpvotes: function () {
