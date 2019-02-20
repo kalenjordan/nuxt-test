@@ -30,9 +30,9 @@
             </div>
             <div class="card--tags text-xs">
                 <router-link :to="{ path: '/tag/' + tag.slug }" v-for="tag in user.tags" :key="tag.id">
-                    <div class="tag animated fast">
+                    <div class="tag mini-tag animated fast">
                         <span class="tag-name">
-                            <template v-if="tag.icon"><i class="tag-icon" :class="tag.icon"></i></template>
+                            <template v-if="tag.icon"><i class="tag-icon material-icons">{{ tag.icon }}</i></template>
                             {{ tag.name }}
                         </span>
                         <span v-if="tag.upvote_count" class="separator">&nbsp;</span>

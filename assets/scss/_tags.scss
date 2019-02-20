@@ -23,6 +23,13 @@
         }
     }
 
+    &.mini-tag {
+        i.tag-icon {
+            font-size: 110%;
+            margin-top: -1px;
+        }
+    }
+
     .tag-name {
         text-decoration: none;
         color: $grayLight;
