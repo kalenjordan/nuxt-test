@@ -52,6 +52,7 @@ module.exports = {
         '~/plugins/vue-js-modal',
         '~/plugins/vue-moment',
         '~/plugins/vue-inject',
+        { src: '~plugins/ga.js', ssr: false },
     ],
 
     /*
