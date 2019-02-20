@@ -1,9 +1,9 @@
 <template>
-    <div class="notification-wrapper">
+    <div class="notification-wrapper relative">
         <i class="material-icons font-120 cursor-pointer animated" @click="toggleNotifications()">
             notifications
         </i>
-        <span v-if="this.unreadNotificationCount" class="alert-bubble absolute bg-primary rounded-full cursor-pointer"
+        <span v-if="this.unreadNotificationCount" class="alert-bubble absolute bg-highlight rounded-full cursor-pointer"
               @click="toggleNotifications()">
                         {{ this.unreadNotificationCount }}
                     </span>

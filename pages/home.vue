@@ -76,6 +76,9 @@
         components: {
             TopNav, UserCard, SavedSearchCard, FooterComponent, KeyboardShortcuts
         },
+        serverCacheKey: function(props) {
+            return 'home';
+        },
         data() {
             return {
                 savedSearches: [],
@@ -111,7 +114,7 @@
                     {hid: 'twitter:title', name: 'twitter:title', content: 'pros.global'},
                     {hid: 'twitter:image', name: 'twitter:image', content: this.cardImage},
                     {hid: 'twitter:description', name: 'twitter:description', content: this.description},
-                    
+
                     {hid: "og:title", name: 'og:title', content: 'pros.global'},
                     {hid: "og:description", name: 'og:description', content: this.description},
                     {hid: "og:image", name: 'og:image', content: this.cardImage},

@@ -58,6 +58,7 @@ module.exports = {
     ** Nuxt.js modules
     */
     modules: [
+        '@nuxtjs/component-cache',
         '@nuxtjs/vuetify',
         '@nuxtjs/dotenv',
         '@nuxtjs/toast',
