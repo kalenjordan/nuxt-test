@@ -40,7 +40,7 @@
                     <ais-search-box autofocus></ais-search-box>
                     <ais-results>
                         <template slot-scope="{ result }">
-                            <router-link class="no-link" :to="{path: result.url}">
+                            <router-link class="ais-result-link no-link" :to="{path: result.url}">
                                 <img v-if="result.type==='user'" class="w-8 rounded-full" :src="result.avatar_path">
                                 <i v-if="result.type==='tag'" class="fas fa-tag"></i>
                                 <i v-if="result.type==='saved-search'" class="fas fa-search"></i>
@@ -84,21 +84,25 @@
                 this.isSearching = true;
                 this.$nextTick(() => {
                     if (this.$refs.search) {
-                        this.$refs.search.focus();
+                        //this.$refs.search.focus();
+                        // Sometimes the this.$refs.search.focus() doesn't work
+                        document.querySelector('.ais-input').focus();
                     }
                 });
+
+                // Sometimes the focus() in the $nextTick() above doesn't work
+                setTimeout(() => {
+                    document.querySelector('.ais-input').focus();
+                }, 100);
             },
             hotkeys(e) {
                 if (e.key === 'Escape') {
                     this.isSearching = false;
-                    this.$refs.search.blur();
+                    if (document.querySelector('.ais-input')) document.querySelector('.ais-input').blur();
                 }
                 if (document.activeElement.id === 'top-nav-search') {
                     if (e.key === 'Enter') {
                         this.search();
-                    } else if (e.key === 'Escape') {
-                        this.isSearching = false;
-                        this.$refs.search.blur();
                     }
                 } else if (document.activeElement.tagName === 'BODY') {
                     if (e.key === '/') {
