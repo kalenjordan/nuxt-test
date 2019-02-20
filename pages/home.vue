@@ -77,7 +77,7 @@
             TopNav, UserCard, SavedSearchCard, FooterComponent, KeyboardShortcuts
         },
         serverCacheKey: function(props) {
-            return 'home';
+            return false; // 'home';
         },
         data() {
             return {
