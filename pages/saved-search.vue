@@ -133,23 +133,8 @@
         head() {
             return {
                 title: this.savedSearch.name + " | pros.global",
-                meta: [
-                    {hid: 'description', name: 'description', content: this.savedSearch.description},
-
-                    {hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image'},
-                    {hid: 'twitter:site', name: 'twitter:site', content: '@kalenjordan'},
-                    {hid: 'twitter:creator', name: 'twitter:creator', content: '@kalenjordan'},
-                    {hid: 'twitter:title', name: 'twitter:title', content: this.savedSearch.name},
-                    {hid: 'twitter:image', name: 'twitter:image', content: this.cardImage},
-                    {hid: 'twitter:description', name: 'twitter:description', content: this.savedSearch.description},
-
-                    {hid: "title", name: 'title', property : 'og:title', content: this.savedSearch.name},
-                    {hid: 'image', name: 'image', property: 'og:image', content: this.cardImage },
-                    {hid: "url", name: 'url', property: 'og:url', content: process.env.APP_URL + 's/' + this.savedSearch.slug },
-
-                    {hid: "og:title", name: 'og:title', content: this.savedSearch.name},
-                    {hid: "og:description", name: 'og:description', content: this.savedSearch.description},
-                ]
+                meta: this.$metaTags(this.savedSearch.name, this.savedSearch.description,
+                    process.env.APP_URL + 's/' + this.savedSearch.slug),
             }
         },
         mounted() {

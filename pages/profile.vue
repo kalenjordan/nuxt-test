@@ -121,19 +121,8 @@
         head() {
             return {
                 title: this.user.name + " | pros.global",
-                meta: [
-                    {
-                        hid: 'description',
-                        name: 'description',
-                        content: this.user.headline,
-                    },
-                    {
-                        hid: 'og:description',
-                        name: 'og:description',
-                        content: this.user.headline,
-                    },
-                ]
-            }
+                meta: this.$metaTags(this.user.name, this.user.headline, this.cardImage)
+            };
         },
         mounted() {
             window.addEventListener('keyup', this.hotkeys);
@@ -207,6 +196,11 @@
             // },
         },
         computed: {
+            cardImage() {
+                return 'https://image.thum.io/get/viewportWidth/900/viewportHeight/450/width/900/noanimate/' +
+                    '?url=' + encodeURIComponent(process.env.CARD_BASE_URL + '/' + this.user.username + '/twitter-card?v2');
+            },
+
             hasUpvotes: function () {
                 return this.user.upvotes && this.user.upvotes.length;
             },

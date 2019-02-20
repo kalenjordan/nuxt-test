@@ -102,24 +102,7 @@
         head() {
             return {
                 title: process.env.APP_NAME + " - Connect with awesome pros",
-                meta: [
-                    {hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'pros.global'},
-                    {hid: "title", name: 'title', property: 'og:title', content: 'pros.global'},
-                    {hid: 'description', name: 'description', property: 'og:description', content: this.description},
-                    {hid: 'image', name: 'image', property: 'og:image', content: this.cardImage},
-                    {hid: "url", name: 'url', property: 'og:url', content: process.env.APP_URL},
-
-                    {hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image'},
-                    {hid: 'twitter:site', name: 'twitter:site', content: '@kalenjordan'},
-                    {hid: 'twitter:creator', name: 'twitter:creator', content: '@kalenjordan'},
-                    {hid: 'twitter:title', name: 'twitter:title', content: 'pros.global'},
-                    {hid: 'twitter:image', name: 'twitter:image', content: this.cardImage},
-                    {hid: 'twitter:description', name: 'twitter:description', content: this.description},
-
-                    {hid: "og:title", name: 'og:title', content: 'pros.global'},
-                    {hid: "og:description", name: 'og:description', content: this.description},
-                    {hid: "og:image", name: 'og:image', content: this.cardImage},
-                ]
+                meta: this.$metaTags('pros.global', this.description, this.cardImage, process.env.APP_URL)
             }
         },
         mounted() {
