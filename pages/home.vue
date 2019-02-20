@@ -76,9 +76,10 @@
         components: {
             TopNav, UserCard, SavedSearchCard, FooterComponent, KeyboardShortcuts
         },
-        serverCacheKey: function(props) {
-            return false; // 'home';
-        },
+        // name: 'home',
+        // serverCacheKey: function(props) {
+        //     return 'home';
+        // },
         data() {
             return {
                 savedSearches: [],
