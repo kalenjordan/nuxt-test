@@ -53,6 +53,7 @@ module.exports = {
         '~/plugins/vue-moment',
         '~/plugins/vue-inject',
         { src: '~plugins/ga.js', ssr: false },
+        '~/plugins/axios',
     ],
 
     /*
@@ -86,7 +87,7 @@ module.exports = {
     },
 
     axios: {
-        headers: { 'accept': 'application/json' },
+        // none
     },
 
     router: {
