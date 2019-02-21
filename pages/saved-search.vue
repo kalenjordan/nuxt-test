@@ -133,8 +133,7 @@
         head() {
             return {
                 title: this.savedSearch.name + " | pros.global",
-                meta: this.$metaTags(this.savedSearch.name, this.savedSearch.description,
-                    process.env.APP_URL + 's/' + this.savedSearch.slug),
+                meta: this.$metaTags(this.savedSearch.name, this.savedSearch.description, this.cardImage),
             }
         },
         mounted() {
@@ -222,7 +221,7 @@
         computed: {
             cardImage() {
                 return 'https://image.thum.io/get/viewportWidth/900/viewportHeight/450/width/900/noanimate/' +
-                    '?url=' + encodeURIComponent(process.env.CARD_BASE_URL + 's/' + this.savedSearch.slug + '/twitter-card?v3');
+                    '?url=' + encodeURIComponent(process.env.CARD_BASE_URL + 's/' + this.savedSearch.slug + '/twitter-card?v4');
             },
             loggedIn() {
                 return this.$store.state.user && this.$store.state.user.id;
