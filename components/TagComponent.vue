@@ -53,7 +53,7 @@
                 let index = this.user.tags.indexOf(tag);
                 this.$delete(this.user.tags, index);
 
-                this.$axios.get(this.$api('users/' + this.user.username + '/delete-tag/')).then((response) => {
+                this.$axios.get(this.$api('users/' + this.user.username + '/delete-tag/' + tag.id)).then((response) => {
                     this.user.tags = response.data;
                 });
             }
