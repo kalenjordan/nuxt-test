@@ -46,16 +46,16 @@
                     {{ upvote.author_firstname }}
                 </router-link>
             </div>
-            <!--<div class="container text-center text-4xl text-gray-light">-->
+            <div class="container text-center text-4xl text-gray-light">
                 <!--<input type="hidden" v-model="message">-->
                 <!--<a class="naked-link mr-3" href="javascript://"-->
                    <!--v-clipboard:copy="message"-->
                    <!--v-clipboard:success="linkedinShare"-->
                    <!--v-clipboard:error="onError"><i class="fab fa-linkedin"></i></a>-->
-                <!--<a class="naked-link" target="_blank" :href="twitterShareUrl">-->
-                    <!--<i class="fab fa-twitter"></i>-->
-                <!--</a>-->
-            <!--</div>-->
+                <a class="naked-link" target="_blank" :href="twitterShareUrl">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
         </section>
         <hr class="mt-16 mb-16"/>
         <footer-component></footer-component>
@@ -99,7 +99,12 @@
         head() {
             return {
                 title: "Shout-out to " + this.upvote.tagged_user_firstname + " from " + this.upvote.author_firstname,
-            }
+                meta: this.$metaTags(
+                    "Shout-out to " + this.upvote.tagged_user_firstname + " from " + this.upvote.author_firstname,
+                    this.upvote.message ? this.upvote.message.substring(0, 200) : null,
+                    this.cardImage
+                )
+            };
         },
         methods: {
             hotkeys(e) {
@@ -155,14 +160,23 @@
             },
         },
         computed: {
+            cardImage() {
+                return 'https://image.thum.io/get/viewportWidth/900/viewportHeight/450/width/900/noanimate/' +
+                    '?url=' + encodeURIComponent(process.env.CARD_BASE_URL + '/upvotes/' + this.upvote.id + '/twitter-card?v2');
+            },
             loggedInUser() {
                 return this.$cookies.get('user');
             },
             twitterShareUrl() {
                 let hashtag = this.upvote.tag_slug ? this.upvote.tag_slug.replace('-', '') : null;
-                let text = "I just gave @" + this.upvote.tagged_username + " some props:\r\n\r\n" +
+                let url = process.env.APP_URL + 'upvotes/' + this.upvote.id;
+
+                let name = this.upvote.tagged_twitter_username ? ('@' + this.upvote.tagged_twitter_username) :
+                    this.upvote.tagged_user_firstname;
+
+                let text = "I just gave " + name + " some props:\r\n\r\n" +
                     '"' + this.shortenedMessage + '"' + "\r\n\r\n" +
-                    window.location.href + "\r\n\r\n" +
+                    url + "\r\n\r\n" +
                     '#' + hashtag;
 
                 return 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
@@ -177,7 +191,7 @@
                     return this.upvote.message;
                 }
 
-                let subString = this.upvote.message.substr(0, n - 1);
+                let subString = this.upvote.message ? this.upvote.message.substr(0, n - 1) : "";
                 return subString.substr(0, subString.lastIndexOf(' ')) + "...";
             }
         },

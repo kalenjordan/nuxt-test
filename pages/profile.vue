@@ -30,6 +30,9 @@
                 <input ref="headline" v-if="editing" v-model="user.headline"
                        class="p-2 mb-2  block mx-auto w-128 bg-transparent-input text"
                        placeholder="e.g. I am a person that does certain things!">
+                <input ref="twitter_username" v-if="editing" v-model="user.twitter_username"
+                       class="p-2 mb-2  block mx-auto w-full bg-transparent-input text"
+                       placeholder="e.g. username">
                 <h1 v-if="!editing" class="text-xl sm:text-4xl animated">
                     {{ user.headline }}
                 </h1>
@@ -81,6 +84,10 @@
         <section class="mt-16 text-center text-4xl text-gray-light">
             <a class="naked-link mr-3" target="_blank" :href="linkedInUrl">
                 <i class="fab fa-linkedin"></i>
+            </a>
+            <a v-if="user.twitter_username" class="naked-link" target="_blank"
+               :href="'https://twitter.com/' + user.twitter_username">
+                <i class="fab fa-twitter"></i>
             </a>
         </section>
 
