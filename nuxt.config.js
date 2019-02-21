@@ -59,6 +59,7 @@ module.exports = {
     ** Nuxt.js modules
     */
     modules: [
+        '@nuxtjs/sentry',
         '@nuxtjs/component-cache',
         '@nuxtjs/vuetify',
         '@nuxtjs/dotenv',
@@ -68,6 +69,11 @@ module.exports = {
         'nuxt-material-design-icons',
         'cookie-universal-nuxt',
     ],
+
+    sentry: {
+        dsn: process.env.SENTRY_DSN,
+        config: {}, // Additional config
+    },
 
     toast: {
         position: 'bottom-right',
