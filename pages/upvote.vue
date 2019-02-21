@@ -69,6 +69,7 @@
     import KeyboardShortcuts from '~/components/KeyboardShortcuts'
 
     import showdown from 'showdown';
+    import axios from 'axios';
 
     export default {
         components: {
@@ -79,6 +80,13 @@
                 upvote: {},
                 editing: false,
                 message: null,
+            }
+        },
+        async asyncData({params}) {
+            if (process.server) {
+                let url = process.env.API_URL + 'upvotes/' + params.id;
+                let {data} = await axios.get(url);
+                return {upvote: data};
             }
         },
         mounted() {
