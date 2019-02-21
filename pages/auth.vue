@@ -12,12 +12,11 @@
     export default {
         data() {
             return {
-                user: { name: 'not logged in' }
+                user: {name: 'not logged in'}
             }
         },
-        async mounted() {
-            let url = process.env.API_URL + 'me?api_token=' + this.$route.query.api_token;
-            this.$axios.get(url).then((response) => {
+        mounted() {
+            this.$axios.get('me?api_token=' + this.$route.query.api_token).then((response) => {
                 this.user = response.data;
                 this.$cookies.set('user', JSON.stringify(response.data));
                 window.opener.location.reload();

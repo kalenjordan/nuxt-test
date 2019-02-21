@@ -110,8 +110,6 @@
     import FooterComponent from '~/components/FooterComponent.vue'
     import KeyboardShortcuts from '~/components/KeyboardShortcuts';
 
-    import axios from 'axios';
-
     export default {
         components: {
             TopNav, UserCard, SavedSearchCard, FooterComponent, KeyboardShortcuts
@@ -123,10 +121,9 @@
                 editing: false,
             }
         },
-        async asyncData({params}) {
+        async asyncData({$axios, params}) {
             if (process.server) {
-                let url = process.env.API_URL + 'saved-searches/' + params.slug;
-                let {data} = await axios.get(url);
+                let {data} = await $axios.get('saved-searches/' + params.slug);
                 return {savedSearch: data};
             }
         },

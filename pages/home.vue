@@ -70,8 +70,6 @@
         Typewriter = require('typewriter-effect/dist/core')
     }
 
-    import axios from 'axios'
-
     export default {
         components: {
             TopNav, UserCard, SavedSearchCard, FooterComponent, KeyboardShortcuts
@@ -86,13 +84,13 @@
                 homeSavedSearch: {users: []},
             }
         },
-        async asyncData() {
+        async asyncData({$axios, params}) {
             if (!process.server) {
                 return {homeSavedSearch: {users: []}};
             }
 
-            let url = process.env.API_URL + 'saved-searches/home?with_users=1';
-            return axios.get(url)
+            let url = 'saved-searches/home?with_users=1';
+            return await $axios.get(url)
                 .then((response) => {
                     return {
                         homeSavedSearch: response.data,

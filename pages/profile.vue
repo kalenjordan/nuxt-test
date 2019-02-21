@@ -104,7 +104,6 @@
     import KeyboardShortcuts from '~/components/KeyboardShortcuts'
     import ProfileTags from '~/components/ProfileTags'
 
-    import axios from 'axios'
     import showdown from 'showdown'
 
     export default {
@@ -118,10 +117,9 @@
                 messages: [],
             }
         },
-        async asyncData({params}) {
+        async asyncData({$axios, params}) {
             if (process.server) {
-                let url = process.env.API_URL + 'users/' + params.username;
-                let {data} = await axios.get(url);
+                let {data} = await $axios.get('users/' + params.username);
                 return {user: data};
             }
         },
