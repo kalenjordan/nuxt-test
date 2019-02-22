@@ -1,7 +1,10 @@
 import Vue from 'vue'
 
 Vue.prototype.$api = function (path) {
-    path = path + (path.indexOf('?') !== -1 ? '&' : '?') + 'api_token=' + this.loggedInUser.api_token;
+    if (this.loggedInUser) {
+        path = path + (path.indexOf('?') !== -1 ? '&' : '?') + 'api_token=' + this.loggedInUser.api_token;
+    }
+    
     return path;
 };
 
