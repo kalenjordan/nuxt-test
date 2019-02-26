@@ -1,100 +1,94 @@
 <template>
-    <div class="notification-wrapper relative">
-        <i class="material-icons font-120 cursor-pointer animated" @click="toggleNotifications()">
-            notifications
-        </i>
-        <span v-if="this.unreadNotificationCount" class="alert-bubble absolute bg-highlight rounded-full cursor-pointer"
-              @click="toggleNotifications()">
-                        {{ this.unreadNotificationCount }}
-                    </span>
-        <div v-if="showingNotifications" class="card notification-list absolute w-64">
-            <div class="card-inner font-120">
-                <ul class="list-reset" v-if="notifications.length">
-                    <li v-for="notification in notifications" class="px-4 py-2" :class="{'bg-primary-lightest' : notification.read_at === null}">
-                        {{ notification.data.text }}
-                        <router-link class="paragraph-link" v-if="notification.data.link"
-                                     :to="{ name: notification.data.link.name, params: notification.data.link.params}">
-                            {{ notification.data.link.cta }}
-                        </router-link>
-                        <span class="text-gray" v-if="notification.created_at">
-                            {{ notification.created_at | moment("subtract", "6 hours") | moment("from") }}
-                        </span>
-                        <span class="text-gray" v-else>
-                            Just now
-                        </span>
-                    </li>
-                </ul>
-                <ul class="list-reset" v-else>
-                    <li class="p-2">No notifications yet</li>
-                </ul>
-            </div>
-        </div>
+  <div class="notification-wrapper relative">
+    <i class="material-icons font-120 cursor-pointer animated" @click="toggleNotifications()">
+      notifications
+    </i>
+    <span
+      v-if="unreadNotificationCount"
+      class="alert-bubble absolute bg-highlight rounded-full cursor-pointer"
+      @click="toggleNotifications()"
+    >
+      {{ unreadNotificationCount }}
+    </span>
+    <div v-if="showingNotifications" class="card notification-list absolute w-64">
+      <div class="card-inner font-120">
+        <ul v-if="notifications.length" class="list-reset">
+          <li
+            v-for="(notification,i) in notifications"
+            :key="i"
+            :class="{'bg-primary-lightest' : notification.read_at === null}"
+            class="px-4 py-2"
+          >
+            {{ notification.data.text }}
+            <nuxt-link
+              v-if="notification.data.link"
+              :to="{ name: notification.data.link.name, params: notification.data.link.params}"
+              class="paragraph-link"
+            >
+              {{ notification.data.link.cta }}
+            </nuxt-link>
+            <span v-if="notification.created_at" class="text-gray">
+              {{ notification.created_at | moment('subtract', '6 hours') | moment('from') }}
+            </span>
+            <span v-else class="text-gray">
+              Just now
+            </span>
+          </li>
+        </ul>
+        <ul v-else class="list-reset">
+          <li class="p-2">
+            No notifications yet
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-    import {mapMutations} from 'vuex'
-
-    export default {
-        props: ['hideSearch', 'user'],
-        data() {
-            return {
-                showingNotifications: false,
-            }
-        },
-        mounted() {
-            // this.listenForMessages();
-        },
-        watch: {
-            // Used to work from mounted() but then it stopped and now this works
-            loggedInUser(newVal, oldVal) {
-                if (newVal && oldVal && (!oldVal.id || newVal.id !== oldVal.id)) {
-                    this.initNotificatons();
-                }
-            }
-        },
-        methods: {
-            initNotificatons() {
-                if (this.loggedInUser.api_token) {
-                    this.$axios.get(this.$api('notifications')).then((response) => {
-                        this.$store.commit('updateUnreadNotificationCount', response.data.unread_count);
-                        this.$store.commit('updateNotifications', response.data.notifications);
-                    });
-                }
-            },
-            // listenForMessages() {
-            //     let channel = 'user_notifications_' + this.loggedInUser.id;
-            //     window.Echo.private(channel)
-            //         .listen('MessageSentNotificationEvent', (e) => {
-            //             let count = this.unreadNotificationCount;
-            //             count++;
-            //             this.$store.commit('updateUnreadNotificationCount', count);
-            //
-            //             let notifications = this.notifications;
-            //             let notification = {data: e.notification};
-            //             notification.read_at = null;
-            //             notifications.unshift(notification);
-            //
-            //             this.$store.commit('updateNotifications', notifications);
-            //         });
-            // },
-            toggleNotifications() {
-                this.showingNotifications = !this.showingNotifications;
-                this.$axios.get(this.$api('notifications/mark-read')).then((response) => {
-                    this.$store.commit('updateUnreadNotificationCount', 0);
-                });
-            },
-        },
-        computed: {
-            loggedInUser() {
-                return this.$store.state.user;
-            },
-            unreadNotificationCount() {
-                return this.$store.state.unreadNotificationCount;
-            },
-            notifications() {
-                return this.$store.state.notifications;
-            },
-        },
+export default {
+  props: ['hideSearch', 'user'],
+  data() {
+    return {
+      showingNotifications: false
     }
+  },
+  computed: {
+    loggedInUser() {
+      return this.$store.state.user
+    },
+    unreadNotificationCount() {
+      return this.$store.state.unreadNotificationCount
+    },
+    notifications() {
+      return this.$store.state.notifications
+    }
+  },
+  watch: {
+    // Used to work from mounted() but then it stopped and now this works
+    loggedInUser(newVal, oldVal) {
+      if (newVal && oldVal && (!oldVal.id || newVal.id !== oldVal.id)) {
+        this.initNotificatons()
+      }
+    }
+  },
+  mounted() {
+    // this.listenForMessages();
+  },
+  methods: {
+    initNotificatons() {
+      if (this.loggedInUser.api_token) {
+        this.$axios.get(this.$api('notifications')).then((response) => {
+          this.$store.commit('updateUnreadNotificationCount', response.data.unread_count)
+          this.$store.commit('updateNotifications', response.data.notifications)
+        })
+      }
+    },
+    async toggleNotifications() {
+      this.showingNotifications = !this.showingNotifications
+      await this.$axios.$get(this.$api('notifications/mark-read'))
+      this.$store.commit('updateUnreadNotificationCount', 0)
+    }
+  }
+}
 </script>
